@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             options: commonOptions
         });
 
-        // Chart 2: Horizontal Bar - Business Growth
+        // Chart 2: Vertical Bar - Business Growth
         window.myCharts.c2 = new Chart(document.getElementById('chart2'), {
             type: 'bar',
             data: {
@@ -310,14 +310,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     label: '%',
                     data: [60, 18, -20, -30],
-                    backgroundColor: chartColors.primaryGlow,
-                    borderColor: chartColors.primary,
+                    backgroundColor: function (ctx) {
+                        return ctx.parsed.y >= 0 ? chartColors.primaryGlow : 'rgba(255,80,80,0.4)';
+                    },
+                    borderColor: function (ctx) {
+                        return ctx.parsed.y >= 0 ? chartColors.primary : '#ff5050';
+                    },
                     borderWidth: 1
                 }]
             },
             options: {
                 ...commonOptions,
-                indexAxis: 'y'
+                scales: {
+                    x: { grid: { color: chartColors.grid }, ticks: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace", size: 10 } } },
+                    y: {
+                        grid: { color: chartColors.grid },
+                        ticks: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace" }, callback: v => v + '%' },
+                        min: -40,
+                        max: 80
+                    }
+                }
             }
         });
 

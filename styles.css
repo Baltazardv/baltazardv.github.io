@@ -633,7 +633,7 @@ h1.glitch {
 
 .chart-header p {
     font-size: 0.85rem;
-    color: #999;
+    color: #c0c0c0;
 }
 
 .canvas-box {
@@ -644,7 +644,7 @@ h1.glitch {
 
 .chart-note {
     font-size: 0.75rem;
-    color: #666;
+    color: #aaa;
     margin-top: 1rem;
     text-align: right;
     font-style: italic;
@@ -1072,7 +1072,7 @@ footer {
     border-top: 1px dashed var(--border-dim);
     margin-top: 4rem;
     font-size: 0.8rem;
-    color: #666;
+    color: #aaa;
 }
 
 /* ===== MOBILE RESPONSIVE ===== */
@@ -1082,6 +1082,15 @@ footer {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    /* Foto hero: centrada */
+    .hero-photo-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto 1.5rem;
     }
 
     .hero-photo {
@@ -1096,29 +1105,73 @@ footer {
         height: 175px;
     }
 
-    /* Nombre m\u00e1s peque\u00f1o */
-    .hero h1 {
-        font-size: clamp(1.8rem, 8vw, 3rem);
+    /* Hero: nombre — evitar desbordamiento */
+    .hero {
+        overflow-x: hidden;
     }
 
-    /* Pesta\u00f1as: scroll horizontal en lugar de wrap */
+    .hero h1 {
+        font-size: clamp(1.2rem, 5.5vw, 2rem);
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        text-align: center;
+        padding: 0 0.5rem;
+    }
+
+    .hero-text {
+        padding: 0 0.5rem;
+    }
+
+    /* Pestañas: 2x2 grid en lugar de scroll horizontal */
     .tabs-container {
-        overflow-x: auto;
-        white-space: nowrap;
-        padding-bottom: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
         gap: 0.5rem;
-        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
     }
 
     .tab-btn {
-        display: inline-block;
-        font-size: 0.75rem;
-        padding: 0.4rem 0.7rem;
+        flex: 1 1 calc(50% - 0.25rem);
+        min-width: 0;
+        font-size: 0.72rem;
+        padding: 0.5rem 0.3rem;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    /* Gr\u00e1ficas impact: una por columna */
+    /* Gráficas impact: una por columna */
     .charts-grid {
         grid-template-columns: 1fr;
+    }
+
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        min-height: auto;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    .canvas-box {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        min-height: 220px;
+        overflow: hidden;
+    }
+
+    .canvas-box canvas {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
     }
 
     /* KPI cards: 2x2 */
