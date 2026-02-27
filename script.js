@@ -55,6 +55,67 @@ function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
 }
 
+function toggleExp(id) {
+    const panel = document.getElementById(id);
+    const icon = document.getElementById(id + '-icon');
+    if (!panel) return;
+    const isOpen = panel.style.display !== 'none';
+    panel.style.display = isOpen ? 'none' : 'block';
+    if (icon) icon.textContent = isOpen ? '[ + ]' : '[ - ]';
+}
+
+// Fix 4 — Mobile skills accordion (desktop tabs unchanged)
+function initMobileSkillsAccordion() {
+    if (window.innerWidth > 768) {
+        // Desktop: ensure all tab-contents are uncontrolled by this fn
+        document.querySelectorAll('.tab-content').forEach(p => {
+            p.style.maxHeight = '';
+            p.style.overflow = '';
+        });
+        return;
+    }
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-content');
+    if (!tabs.length) return;
+
+    // Set initial state: close all, open active
+    panels.forEach(p => {
+        p.style.maxHeight = '0';
+        p.style.overflow = 'hidden';
+        p.classList.remove('active');
+    });
+    tabs.forEach(t => t.classList.remove('active'));
+
+    // Find the currently active panel (from showTab state) or default to first
+    const activePanel = document.querySelector('.tab-content.active') || panels[0];
+    const activeIndex = Array.from(panels).indexOf(activePanel);
+    if (activePanel) {
+        activePanel.classList.add('active');
+        activePanel.style.maxHeight = activePanel.scrollHeight + 'px';
+        activePanel.style.overflow = 'visible';
+    }
+    if (tabs[activeIndex]) tabs[activeIndex].classList.add('active');
+
+    // Attach click handlers (idempotent via flag)
+    tabs.forEach((tab, i) => {
+        if (tab._accordionBound) return;
+        tab._accordionBound = true;
+        tab.addEventListener('click', () => {
+            if (window.innerWidth > 768) return;
+            panels.forEach(p => {
+                p.style.maxHeight = '0';
+                p.style.overflow = 'hidden';
+                p.classList.remove('active');
+            });
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            panels[i].classList.add('active');
+            panels[i].style.maxHeight = panels[i].scrollHeight + 'px';
+            setTimeout(() => { panels[i].style.overflow = 'visible'; }, 350);
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Intersection Observer for Scroll Animations (fade-in)
     const fadeElements = document.querySelectorAll('.fade-in');
@@ -119,18 +180,20 @@ document.addEventListener('DOMContentLoaded', () => {
             about_subtitle: "// Quién soy y de dónde vengo",
             about_credentials: "> CREDENCIALES:",
             about_cred_1: "Ingeniero en Computación — UAGro, 2023",
-            about_cred_2: "Certificación en Análisis de Datos (TripleTen)",
+            about_cred_2: "Certificación en Análisis de Datos (TripleTen) — 2026",
             about_profile: "> PERFIL:",
-            about_profile_text: "Combino análisis de datos con desarrollo de software. Entiendo tanto los números como los sistemas que los generan, lo que me permite encontrar soluciones más completas.",
+            about_profile_text: "Hace unos años gestionaba procesos técnicos en el sector judicial<br>y descubrí algo que cambió mi carrera: los datos contaban una<br>historia que nadie estaba escuchando.<br><br>Cada proceso que automaticé, cada incidencia que previne,<br>me mostró que detrás de cada número hay una decisión de negocio<br>esperando ser tomada.<br><br>Hoy combino Ingeniería en Computación con Análisis de Datos<br>para transformar métricas en acciones concretas — no solo<br>entiendo los datos, también entiendo los sistemas que los generan.",
+            about_specialty: "> ESPECIALIDAD:",
+            about_specialty_text: "eCommerce Analytics · Machine Learning · Business Intelligence<br>Python · SQL · Power BI · Google Analytics GA4",
             about_location: "> UBICACIÓN:",
-            about_location_text: "Basado en México. Disponible para trabajo remoto.",
+            about_location_text: "Guerrero, México — Disponible para trabajo remoto.",
             skills_title: "02.<span class='glitch-hover' data-text='MIS_HABILIDADES'>MIS_HABILIDADES</span>",
             skills_subtitle: "// Herramientas con las que trabajo",
             tab_data: "[ DATOS Y BI ]",
             tab_db: "[ BASES DE DATOS ]",
             tab_web: "[ WEB Y DESARROLLO ]",
             tab_tools: "[ HERRAMIENTAS ]",
-            impact_title: "03.<span class='glitch-hover' data-text='MI_IMPACTO'>MI_IMPACTO</span>",
+            impact_title: "05.<span class='glitch-hover' data-text='MI_IMPACTO'>MI_IMPACTO</span>",
             impact_subtitle: "// Resultados reales que he generado",
             chart1_title: "Automatización de Procesos",
             chart1_desc: "Reduje tiempos de trabajo manual implementando mis propias soluciones",
@@ -152,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             proj_problem: "🔍 El problema:",
             proj_stack: "🛠 Cómo lo resolví:",
             proj_result: "✅ Resultado:",
-            exp_title: "05.<span class='glitch-hover' data-text='EXPERIENCIA'>EXPERIENCIA</span>",
+            exp_title: "03.<span class='glitch-hover' data-text='EXPERIENCIA'>EXPERIENCIA</span>",
             exp_subtitle: "// Dónde he trabajado y qué logré",
             exp_role1: "Desarrollador Web",
             exp_role2: "Soporte TI",
@@ -197,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tab_db: "[ DATABASES ]",
             tab_web: "[ WEB & DEV ]",
             tab_tools: "[ TOOLS ]",
-            impact_title: "03.<span class='glitch-hover' data-text='MY_IMPACT'>MY_IMPACT</span>",
+            impact_title: "05.<span class='glitch-hover' data-text='MY_IMPACT'>MY_IMPACT</span>",
             impact_subtitle: "// Real business results I've generated",
             chart1_title: "Process Automation",
             chart1_desc: "Reduction in management times after implementing custom solutions",
@@ -219,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
             proj_problem: "🔍 Challenge:",
             proj_stack: "🛠 Stack:",
             proj_result: "✅ Result:",
-            exp_title: "05.<span class='glitch-hover' data-text='WORK_EXPERIENCE'>WORK_EXPERIENCE</span>",
+            exp_title: "03.<span class='glitch-hover' data-text='WORK_EXPERIENCE'>WORK_EXPERIENCE</span>",
             exp_subtitle: "// Where I've worked and what I achieved",
             exp_role1: "Web Developer",
             exp_role2: "IT Support & Sales",
@@ -327,26 +390,41 @@ document.addEventListener('DOMContentLoaded', () => {
         window.myCharts.c1 = new Chart(document.getElementById('chart1'), {
             type: 'bar',
             data: {
-                labels: currentLang === 'es' ? ['Base manual', 'Tras auto PHP', 'Tras opt web'] : ['Manual Base', 'PHP Auto', 'Web Opt'],
+                labels: currentLang === 'es'
+                    ? ['Proceso manual\n(base 100%)', 'App PHP v1\n(−40%)', 'PHP + opt. web\n(−75%)']
+                    : ['Manual process\n(base 100%)', 'PHP App v1\n(−40%)', 'PHP + web opt\n(−75%)'],
                 datasets: [{
-                    label: '%',
-                    data: [100, 60, 75],
+                    label: currentLang === 'es' ? 'Tiempo relativo (%)' : 'Relative time (%)',
+                    data: [100, 60, 25],
                     backgroundColor: chartColors.primaryGlow,
                     borderColor: chartColors.primary,
                     borderWidth: 1
                 }]
             },
-            options: commonOptions
+            options: {
+                ...commonOptions,
+                scales: {
+                    x: { grid: { color: chartColors.grid }, ticks: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace", size: 9 } } },
+                    y: {
+                        grid: { color: chartColors.grid },
+                        ticks: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace" }, callback: v => v + '%' },
+                        min: 0, max: 110,
+                        title: { display: true, text: currentLang === 'es' ? 'Tiempo relativo al proceso manual (%)' : 'Time relative to manual process (%)', color: chartColors.text, font: { family: "'Share Tech Mono', monospace", size: 9 } }
+                    }
+                }
+            }
         });
 
         // Chart 2: Vertical Bar - Business Growth
         window.myCharts.c2 = new Chart(document.getElementById('chart2'), {
             type: 'bar',
             data: {
-                labels: currentLang === 'es' ? ['Ventas', 'Conversión', 'Incidencias', 'Errores Sync'] : ['Sales', 'Conversion', 'Incidents', 'Sync Errors'],
+                labels: currentLang === 'es'
+                    ? ['+60% Ventas\nPachateca', '+25% UX Score\nOK Latino', '−20% Incidencias\nInst. Judicial', '−40% T. Gestión\nInst. Judicial']
+                    : ['+60% Sales\nPachateca', '+25% UX Score\nOK Latino', '−20% Incidents\nJud. Inst.', '−40% Op. Time\nJud. Inst.'],
                 datasets: [{
-                    label: '%',
-                    data: [60, 18, -20, -30],
+                    label: currentLang === 'es' ? 'Variación vs. línea base (%)' : 'Change vs. baseline (%)',
+                    data: [60, 25, -20, -40],
                     backgroundColor: function (ctx) {
                         return ctx.parsed.y >= 0 ? chartColors.primaryGlow : 'rgba(255,80,80,0.4)';
                     },
@@ -359,12 +437,13 @@ document.addEventListener('DOMContentLoaded', () => {
             options: {
                 ...commonOptions,
                 scales: {
-                    x: { grid: { color: chartColors.grid }, ticks: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace", size: 10 } } },
+                    x: { grid: { color: chartColors.grid }, ticks: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace", size: 8 } } },
                     y: {
                         grid: { color: chartColors.grid },
                         ticks: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace" }, callback: v => v + '%' },
-                        min: -40,
-                        max: 80
+                        min: -60,
+                        max: 80,
+                        title: { display: true, text: currentLang === 'es' ? 'Variación respecto a línea base (%)' : 'Change vs. prior baseline (%)', color: chartColors.text, font: { family: "'Share Tech Mono', monospace", size: 9 } }
                     }
                 }
             }
@@ -374,7 +453,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.myCharts.c3 = new Chart(document.getElementById('chart3'), {
             type: 'doughnut',
             data: {
-                labels: currentLang === 'es' ? ['Precisión', 'Margen Error'] : ['Accuracy', 'Error Rate'],
+                labels: currentLang === 'es'
+                    ? ['72% Precisión alcanzada', '28% Margen de mejora identificado']
+                    : ['72% Accuracy achieved', '28% Improvement margin'],
                 datasets: [{
                     data: [72, 28],
                     backgroundColor: [chartColors.primary, chartColors.bg],
@@ -388,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cutout: '65%',
                 color: chartColors.text,
                 plugins: {
-                    legend: { position: 'bottom', labels: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace" } } }
+                    legend: { position: 'bottom', labels: { color: chartColors.text, font: { family: "'Share Tech Mono', monospace", size: 10 }, boxWidth: 12 } }
                 }
             },
             plugins: [{
@@ -400,14 +481,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.font = "bold " + fontSize + "em 'Orbitron', sans-serif";
                     ctx.textBaseline = "middle";
                     ctx.fillStyle = chartColors.primary;
-                    var text = "72%", textX = Math.round((width - ctx.measureText(text).width) / 2), textY = height / 2.3;
+                    var text = "72%", textX = Math.round((width - ctx.measureText(text).width) / 2), textY = height / 2.5;
                     ctx.fillText(text, textX, textY);
 
-                    ctx.font = (fontSize / 2) + "em 'Share Tech Mono', monospace";
+                    ctx.font = (fontSize * 0.45) + "em 'Share Tech Mono', monospace";
                     ctx.fillStyle = chartColors.text;
-                    var subText = currentLang === 'es' ? "Precisión" : "Accuracy";
+                    var subText = currentLang === 'es' ? 'Precisión' : 'Accuracy';
                     var subTextX = Math.round((width - ctx.measureText(subText).width) / 2);
-                    ctx.fillText(subText, subTextX, textY + 25);
+                    ctx.fillText(subText, subTextX, textY + 24);
+
+                    ctx.font = (fontSize * 0.38) + "em 'Share Tech Mono', monospace";
+                    ctx.fillStyle = 'rgba(246,246,246,0.45)';
+                    var rf = 'Random Forest';
+                    var rfX = Math.round((width - ctx.measureText(rf).width) / 2);
+                    ctx.fillText(rf, rfX, textY + 40);
                     ctx.save();
                 }
             }]
@@ -417,13 +504,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateChartsText(lang) {
         if (!window.myCharts.c1) return;
 
-        window.myCharts.c1.data.labels = lang === 'es' ? ['Base manual', 'Tras auto PHP', 'Tras opt web'] : ['Manual Base', 'PHP Auto', 'Web Opt'];
+        window.myCharts.c1.data.labels = lang === 'es'
+            ? ['Proceso manual\n(base 100%)', 'App PHP v1\n(−40%)', 'PHP + opt. web\n(−75%)']
+            : ['Manual process\n(base 100%)', 'PHP App v1\n(−40%)', 'PHP + web opt\n(−75%)'];
+        window.myCharts.c1.data.datasets[0].label = lang === 'es' ? 'Tiempo relativo (%)' : 'Relative time (%)';
+        window.myCharts.c1.options.scales.y.title.text = lang === 'es' ? 'Tiempo relativo al proceso manual (%)' : 'Time relative to manual process (%)';
         window.myCharts.c1.update();
 
-        window.myCharts.c2.data.labels = lang === 'es' ? ['Ventas', 'Conversión', 'Incidencias', 'Errores Sync'] : ['Sales', 'Conversion', 'Incidents', 'Sync Errors'];
+        window.myCharts.c2.data.labels = lang === 'es'
+            ? ['+60% Ventas\nPachateca', '+25% UX Score\nOK Latino', '−20% Incidencias\nInst. Judicial', '−40% T. Gestión\nInst. Judicial']
+            : ['+60% Sales\nPachateca', '+25% UX Score\nOK Latino', '−20% Incidents\nJud. Inst.', '−40% Op. Time\nJud. Inst.'];
+        window.myCharts.c2.data.datasets[0].label = lang === 'es' ? 'Variación vs. línea base (%)' : 'Change vs. baseline (%)';
+        window.myCharts.c2.options.scales.y.title.text = lang === 'es' ? 'Variación respecto a línea base (%)' : 'Change vs. prior baseline (%)';
         window.myCharts.c2.update();
 
-        window.myCharts.c3.data.labels = lang === 'es' ? ['Precisión', 'Margen Error'] : ['Accuracy', 'Error Rate'];
+        window.myCharts.c3.data.labels = lang === 'es'
+            ? ['72% Precisión alcanzada', '28% Margen de mejora identificado']
+            : ['72% Accuracy achieved', '28% Improvement margin'];
         window.myCharts.c3.update();
     }
 
@@ -432,22 +529,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!kpiContainer) return;
 
         const kpiData = lang === 'es' ? [
-            { number: "150+", label: "Audiencias judiciales gestionadas por mes", icon: "⚖" },
-            { number: "16K+", label: "Registros analizados en proyectos de datos", icon: "📊" },
-            { number: "5+", label: "Sitios e-commerce desarrollados", icon: "🛒" },
-            { number: "95%", label: "Satisfacción de clientes en base a datos", icon: "✓" }
+            { number: "150+", label: "Audiencias judiciales / mes", context: "Instituto Mejoramiento Judicial · 2022-2023", detail: "Sin una sola interrupción crítica registrada" },
+            { number: "16K+", label: "Registros analizados", context: "Proyecto Ice Store · Video Game Analysis · 2025", detail: "EDA completo con Python, Pandas y Power BI" },
+            { number: "5+", label: "Sitios e-commerce desarrollados", context: "OK Latino · 2025-Presente", detail: "Kings League, Otto Vacation Rentals y más" },
+            { number: "95%", label: "Satisfacción de clientes", context: "Pachateca · Soporte TI · 2017-2020", detail: "Basado en +50 clientes semanales atendidos" }
         ] : [
-            { number: "150+", label: "Judicial audiences managed per month", icon: "⚖" },
-            { number: "16K+", label: "Records analyzed in data projects", icon: "📊" },
-            { number: "5+", label: "E-commerce sites developed & launched", icon: "🛒" },
-            { number: "95%", label: "Client satisfaction based on ticket data", icon: "✓" }
+            { number: "150+", label: "Judicial audiences / month", context: "Instituto Mejoramiento Judicial · 2022-2023", detail: "Zero critical interruptions recorded" },
+            { number: "16K+", label: "Records analyzed", context: "Ice Store Project · Video Game Analysis · 2025", detail: "Full EDA with Python, Pandas & Power BI" },
+            { number: "5+", label: "E-commerce sites developed", context: "OK Latino · 2025-Present", detail: "Kings League, Otto Vacation Rentals & more" },
+            { number: "95%", label: "Client satisfaction rate", context: "Pachateca · IT Support · 2017-2020", detail: "Based on 50+ weekly clients served" }
         ];
 
         kpiContainer.innerHTML = kpiData.map(kpi => `
             <div class="kpi-card">
-                <span class="kpi-icon">${kpi.icon}</span>
                 <span class="kpi-number glitch-hover" data-text="${kpi.number}">${kpi.number}</span>
                 <span class="kpi-label">${kpi.label}</span>
+                <span class="kpi-context">${kpi.context}</span>
+                <span class="kpi-detail">${kpi.detail}</span>
             </div>
         `).join('');
     }
@@ -477,4 +575,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     attachGlitchHovers();
+
+    // Fix 4 — Initialize mobile accordion for skills tabs
+    initMobileSkillsAccordion();
+});
+
+// Fix 4 — Re-run on resize (handles orientation change)
+window.addEventListener('resize', () => {
+    initMobileSkillsAccordion();
 });
