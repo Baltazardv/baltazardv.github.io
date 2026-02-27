@@ -42,62 +42,69 @@
                 <span class="section-subtitle">// Data models and insights</span>
             </h2>
 
-            <div class="projects-grid-v2">
-                <!-- Project 1 -->
-                <article class="project-card-v2">
-                    <div class="project-thumb">
-                        <span class="glitch" data-text="IMG_NULL">IMG_NULL</span>
+            <div class="projects-column">
+                <!-- Project 1: Telecom Operator Analysis -->
+                <div class="project-card" onclick="openProject('telecom')">
+                    <div class="project-img">
+                        <div class="project-img-fallback">📞 TELECOM OPERATOR ANALYSIS</div>
                     </div>
-                    <div class="project-content-v2">
-                        <h3>Churn Prediction — Telecom ML</h3>
+                    <div class="project-body">
+                        <h3 class="project-title">Identificación de Operadores Ineficaces — Telecom</h3>
                         <div class="project-tags">
-                            <div class="tag-block">
-                                <span class="label" data-i18n="proj_problem">PROBLEM:</span>
-                                <span class="value">Reduce cancellations via early risk detection.</span>
-                            </div>
-                            <div class="tag-block">
-                                <span class="label" data-i18n="proj_stack">STACK:</span>
-                                <span class="value">Python, Scikit-learn, Pandas, Random Forest.</span>
-                            </div>
-                            <div class="tag-block">
-                                <span class="label" data-i18n="proj_result">RESULT:</span>
-                                <span class="value">72% accuracy, 7,000+ records, 20+ features.</span>
-                            </div>
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">Seaborn</span>
+                            <span class="tag">Mann-Whitney U</span>
+                            <span class="tag">Tableau</span>
+                            <span class="tag">Pruebas de Hipótesis</span>
                         </div>
-                        <div class="center-btn">
-                            <a href="https://github.com/Baltazardv/megaline-churn-prediction" target="_blank"
-                                class="cyber-button" style="width: 100%;">VIEW_PROJECT // GITHUB</a>
+                        <p class="project-problem">🔍 <strong>El reto:</strong> Una empresa de telecomunicaciones
+                            necesitaba identificar qué operadores de su call center tenían bajo rendimiento para
+                            priorizar capacitación.</p>
+                        <p class="project-result">✅ <strong>Resultado:</strong> 202 operadores ineficaces identificados
+                            (18.5% del total) con diferencias estadísticamente significativas validadas — p &lt; 0.05.
+                        </p>
+                        <div class="project-actions">
+                            <button class="btn-primary" onclick="event.stopPropagation(); openProject('telecom')">
+                                Ver análisis completo →
+                            </button>
+                            <a href="https://github.com/Baltazardv/telecom-operator-analysis" target="_blank"
+                                onclick="event.stopPropagation()" class="btn-secondary">GitHub →</a>
                         </div>
                     </div>
-                </article>
+                </div>
 
-                <!-- Project 2 -->
-                <article class="project-card-v2">
-                    <div class="project-thumb">
-                        <span class="glitch" data-text="IMG_NULL">IMG_NULL</span>
+                <!-- Project 2: Video Game Success Analysis -->
+                <div class="project-card" onclick="openProject('videogames')">
+                    <div class="project-img">
+                        <img src="../assets/preview-videogames.png" alt="Análisis Videojuegos"
+                            onerror="this.parentElement.innerHTML='<div class=\'project-img-fallback\'>🎮 ANÁLISIS DE VIDEOJUEGOS</div>'">
                     </div>
-                    <div class="project-content-v2">
-                        <h3>Video Game Industry Analysis</h3>
+                    <div class="project-body">
+                        <h3 class="project-title">Análisis de Factores de Éxito en Videojuegos</h3>
                         <div class="project-tags">
-                            <div class="tag-block">
-                                <span class="label" data-i18n="proj_problem">PROBLEM:</span>
-                                <span class="value">Identify launch success factors based on historical data.</span>
-                            </div>
-                            <div class="tag-block">
-                                <span class="label" data-i18n="proj_stack">STACK:</span>
-                                <span class="value">Python, Pandas, NumPy, Matplotlib, DAX.</span>
-                            </div>
-                            <div class="tag-block">
-                                <span class="label" data-i18n="proj_result">RESULT:</span>
-                                <span class="value">15% higher success probability genres identified.</span>
-                            </div>
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">Matplotlib</span>
+                            <span class="tag">EDA</span>
+                            <span class="tag">Pruebas de Hipótesis</span>
                         </div>
-                        <div class="center-btn">
+                        <p class="project-problem">🔍 <strong>El reto:</strong> Ice Online Store necesitaba saber qué
+                            géneros y plataformas de videojuegos tenían más probabilidad de éxito para optimizar su
+                            inventario y campañas de 2017.</p>
+                        <p class="project-result">✅ <strong>Resultado:</strong> Identifiqué géneros con 15% mayor
+                            probabilidad de éxito analizando +16,000 registros (1980-2016) con pruebas estadísticas de
+                            hipótesis.</p>
+                        <div class="project-actions">
+                            <button class="btn-primary" onclick="event.stopPropagation(); openProject('videogames')">
+                                Ver análisis completo →
+                            </button>
                             <a href="https://github.com/Baltazardv/Ice-Online-Store" target="_blank"
-                                class="cyber-button" style="width: 100%;">VIEW_PROJECT // GITHUB</a>
+                                onclick="event.stopPropagation()" class="btn-secondary">GitHub →</a>
                         </div>
                     </div>
-                </article>
+                </div>
             </div>
         </section>
     </main>
@@ -107,6 +114,25 @@
     </footer>
 
     <script src="../script.js"></script>
+
+    <!-- MODAL PROYECTO -->
+    <div id="project-modal" class="modal-overlay" onclick="closeProject()">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span id="modal-title" class="modal-title">Proyecto</span>
+                <div class="modal-header-actions">
+                    <a id="modal-github-link" href="#" target="_blank" class="btn-secondary">
+                        Ver en GitHub →
+                    </a>
+                    <button class="modal-close" onclick="closeProject()">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe id="modal-iframe" src="" frameborder="0" allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

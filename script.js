@@ -1,3 +1,40 @@
+// Datos de proyectos
+var projectsData = {
+    videogames: {
+        title: "Análisis de Factores de Éxito en Videojuegos",
+        github: "https://github.com/Baltazardv/Ice-Online-Store",
+        notebook: "https://nbviewer.org/github/Baltazardv/Ice-Online-Store/blob/main/Proyecto%20de%20An%C3%A1lisis%20de%20Datos%20%C3%89xito%20de%20Videojuegos%20para%20Ice%20Online%20Store.ipynb"
+    },
+    telecom: {
+        title: "Identificación de Operadores Ineficaces — Telecom Analysis",
+        github: "https://github.com/Baltazardv/telecom-operator-analysis",
+        notebook: "https://nbviewer.org/github/Baltazardv/telecom-operator-analysis/blob/main/Proyecto_Final_Operadores_Ineficaces.ipynb"
+    }
+    // Aquí se añadirán más proyectos después
+};
+
+function openProject(projectId) {
+    var project = projectsData[projectId];
+    if (!project) return;
+
+    document.getElementById('modal-title').textContent = project.title;
+    document.getElementById('modal-github-link').href = project.github;
+    document.getElementById('modal-iframe').src = project.notebook;
+    document.getElementById('project-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProject() {
+    document.getElementById('project-modal').classList.remove('open');
+    document.getElementById('modal-iframe').src = ''; // liberar memoria
+    document.body.style.overflow = '';
+}
+
+// Cerrar con tecla Escape
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeProject();
+});
+
 // GLOBALS — declarados antes de DOMContentLoaded para evitar crashes de scope
 var chartsRendered = false;
 var currentLang = localStorage.getItem('i18n-lang') || 'es';

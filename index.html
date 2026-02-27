@@ -319,8 +319,7 @@
                     </div>
                     <div class="skill-card">
                         <div class="skill-card-icon">
-                            <img src="https://cdn.simpleicons.org/microsoftazure/FF5621" width="36" height="36"
-                                alt="Azure">
+                            <img src="https://cdn.simpleicons.org/azure/FF5621" width="36" height="36" alt="Azure">
                         </div>
                         <div class="skill-card-info">
                             <span class="skill-card-name">Microsoft Azure AZ-900</span>
@@ -416,7 +415,8 @@
                         data-text="ARCHIVES">ARCHIVES</span></div>
                 <span class="section-subtitle" data-i18n="projects_subtitle">// Selected works</span>
             </h2>
-            <div class="category-grid">
+            <!-- Los proyectos individuales se movieron a sus páginas correspondientes (data.html / web.html) -->
+            <div class="category-grid" style="margin-top: 1rem;">
                 <a href="projects/data.html" class="category-card cyber-border">
                     <div class="cat-content">
                         <h3 data-i18n="proj_data_title">[ DATA_ANALYTICS_PROJECTS ]</h3>
@@ -519,6 +519,25 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- MODAL PROYECTO -->
+    <div id="project-modal" class="modal-overlay" onclick="closeProject()">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span id="modal-title" class="modal-title">Proyecto</span>
+                <div class="modal-header-actions">
+                    <a id="modal-github-link" href="#" target="_blank" class="btn-secondary">
+                        Ver en GitHub →
+                    </a>
+                    <button class="modal-close" onclick="closeProject()">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe id="modal-iframe" src="" frameborder="0" allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
