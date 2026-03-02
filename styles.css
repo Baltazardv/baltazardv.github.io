@@ -34,8 +34,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle, rgba(255, 86, 33, 0.03) 0%, rgba(14, 13, 13, 0.8) 100%);
     pointer-events: none;
     z-index: 100;
@@ -46,8 +46,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(to bottom,
             rgba(255, 255, 255, 0),
             rgba(255, 255, 255, 0) 50%,
@@ -250,8 +250,9 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    padding-top: 0;
+    min-height: 100vh;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
 }
 
 .hero-content {
@@ -332,13 +333,14 @@ section {
 }
 
 h1.glitch {
-    font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+    font-size: clamp(1.2rem, 3.5vw, 2.5rem);
     font-weight: 900;
     position: relative;
     color: var(--text-light);
     margin-bottom: 0.5rem;
     white-space: nowrap;
     line-height: 1.1;
+    max-width: 100%;
 }
 
 /* Glitch Effect Setup */
@@ -350,19 +352,20 @@ h1.glitch {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg-dark);
+    background: transparent;
+    pointer-events: none;
 }
 
 .glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 red;
+    left: 1px;
+    text-shadow: -1px 0 red;
     clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
     animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 var(--primary);
+    left: -1px;
+    text-shadow: -1px 0 var(--primary);
     clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
     animation: glitch-anim-2 3s infinite linear alternate-reverse;
 }
@@ -1364,12 +1367,24 @@ footer {
     }
 
     .hero h1 {
-        font-size: clamp(1.2rem, 5.5vw, 2rem);
-        word-break: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
+        font-size: 8.5vw;
+        letter-spacing: 0;
+        white-space: nowrap;
         text-align: center;
         padding: 0 0.5rem;
+        line-height: 1.2;
+        max-width: 100vw;
+    }
+
+    /* Reduce glitch effect offset to avoid blurriness/distortion on mobile */
+    .hero h1.glitch::before {
+        left: 1px;
+        text-shadow: -1px 0 red;
+    }
+
+    .hero h1.glitch::after {
+        left: -1px;
+        text-shadow: -1px 0 var(--primary);
     }
 
     .hero-text {
