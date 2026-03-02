@@ -14,80 +14,6 @@
             text-align: center;
             margin-top: auto;
         }
-
-        /* ── FIX: SPINNER ── */
-        .modal-body {
-            position: relative;
-        }
-
-        .notebook-loader {
-            position: absolute;
-            inset: 0;
-            background: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            transition: opacity 0.4s ease;
-        }
-
-        .notebook-loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-inner {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .loader-ring {
-            width: 52px;
-            height: 52px;
-            border: 3px solid #1a1a1a;
-            border-top: 3px solid #FF5621;
-            border-right: 3px solid #FF5621;
-            border-radius: 50%;
-            animation: notebookSpin 0.9s linear infinite;
-        }
-
-        .loader-label {
-            color: #FF5621;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            margin: 0;
-        }
-
-        .loader-sublabel {
-            color: #444;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            margin: 0;
-            animation: blink 1.2s step-end infinite;
-        }
-
-        @keyframes notebookSpin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 
@@ -100,10 +26,11 @@
     <nav class="navbar">
         <div class="nav-content">
             <span class="logo">BD<span class="blink">_</span></span>
-            <div class="header-nav-btns">
-                <a href="../index.html" class="back-home-btn">← INICIO</a>
-                <a href="javascript:history.back()" class="return-btn">&lt; RETURN</a>
-            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html" data-text="RETURN_TO_MAIN">
+                        < RETURN</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -182,21 +109,11 @@
         </section>
     </main>
 
-    <!-- OLD NOTEBOOK LOADER REMOVED -->
-
     <footer>
         <p data-i18n="footer">SYS.COPYRIGHT © 2026 BALTAZAR DIMAYUGA. ALL RIGHTS RESERVED.</p>
-        <a href="../index.html" class="back-home-footer">← Volver al inicio</a>
     </footer>
 
     <script src="../script.js"></script>
-
-    <script>
-        setTimeout(function () {
-            var loader = document.getElementById('notebookLoader');
-            if (loader) loader.classList.add('hidden');
-        }, 3500);
-    </script>
 
     <!-- MODAL PROYECTO -->
     <div id="project-modal" class="modal-overlay" onclick="closeProject()">
@@ -211,16 +128,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <!-- Overlay spinner — va ANTES del iframe -->
-                <div class="notebook-loader" id="notebookLoader">
-                    <div class="loader-inner">
-                        <div class="loader-ring"></div>
-                        <p class="loader-label">// CARGANDO NOTEBOOK...</p>
-                        <p class="loader-sublabel">Procesando datos</p>
-                    </div>
-                </div>
-
-                <iframe id="modal-iframe" src="" frameborder="0" allowfullscreen loading="lazy" class="notebook-frame">
+                <iframe id="modal-iframe" src="" frameborder="0" allowfullscreen loading="lazy">
                 </iframe>
             </div>
         </div>
