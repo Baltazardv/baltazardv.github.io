@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kings League Relojes — Baltazar DV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .case-study {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .case-hero {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .case-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .case-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .case-header p {
+            color: rgba(246, 246, 246, 0.6);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .case-section {
+            margin-bottom: 3rem;
+        }
+
+        .case-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 86, 33, 0.25);
+        }
+
+        .case-section p {
+            color: rgba(246, 246, 246, 0.75);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .screenshot-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .screenshot-block img {
+            width: 100%;
+            border: 1px solid rgba(255, 86, 33, 0.2);
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s;
+        }
+
+        .screenshot-block img:hover {
+            border-color: #FF5621;
+        }
+
+        .screenshot-caption {
+            color: #FF5621;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .screenshot-desc {
+            color: rgba(246, 246, 246, 0.6);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            padding: 1rem;
+            text-align: center;
+            background: rgba(255, 86, 33, 0.04);
+        }
+
+        .metric-number {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .metric-label {
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.72rem;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        .case-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 86, 33, 0.2);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #FF5621;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CRT Effects -->
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../index.html" class="nav-logo">BD<span class="blink">_</span></a>
+            <ul class="nav-links">
+                <li><a href="web.html">&lt; RETURN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="case-study">
+
+        <a href="web.html" class="back-link">← Volver a proyectos web</a>
+
+        <!-- HERO -->
+        <img src="../assets/KingsLeague/cap1.png" alt="Kings League Relojes Hero" class="case-hero">
+
+        <!-- HEADER -->
+        <div class="case-header">
+            <h1>Kings League Relojes — E-commerce Shopify</h1>
+            <div class="case-tags">
+                <span class="tag">Shopify</span>
+                <span class="tag">Liquid</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML5/CSS3</span>
+                <span class="tag">UX/UI</span>
+                <span class="tag">E-commerce</span>
+            </div>
+            <p>Tienda oficial de smartwatches y relojes de la Kings League Americas — desarrollada en Shopify con tema
+                personalizado, carrusel de equipos, 3 series de colección y checkout optimizado para el mercado LATAM.
+            </p>
+        </div>
+
+        <!-- MÉTRICAS -->
+        <div class="case-section">
+            <h2>// IMPACTO</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">25%</span>
+                    <span class="metric-label">Mejora velocidad de carga</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">10</span>
+                    <span class="metric-label">Productos en catálogo</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">3</span>
+                    <span class="metric-label">Series de colección</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">12</span>
+                    <span class="metric-label">Equipos integrados</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: RETO -->
+        <div class="case-section">
+            <h2>// EL RETO</h2>
+            <p>Kings League Americas necesitaba una tienda de e-commerce que transmitiera la identidad visual de la liga
+                — fondo negro, dorado y la corona como símbolo central. El sitio debía funcionar como canal de venta
+                directo para fans de toda LATAM, con experiencia de compra fluida, múltiples métodos de pago y confianza
+                de marca desde el primer scroll.</p>
+        </div>
+
+        <!-- SCREENSHOTS DETALLADOS -->
+        <div class="case-section">
+            <h2>// SOLUCIÓN — SECCIÓN POR SECCIÓN</h2>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap2.png" alt="Hero principal">
+                <p class="screenshot-caption">01 — HERO PRINCIPAL</p>
+                <p class="screenshot-desc">Banner de impacto con los 5 relojes flagship en disposición central. Barra de
+                    beneficios animada (Garantía 2 Años, Envíos Rápidos, Hasta 3 MSI) con scroll infinito. Navegación
+                    limpia con logo oficial y accesos directos a Tienda, Relojes y Reseñas.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap3.png" alt="Carrusel de equipos y producto destacado">
+                <p class="screenshot-caption">02 — CARRUSEL DE EQUIPOS + PRODUCTO DESTACADO</p>
+                <p class="screenshot-desc">Carrusel animado con los 12 escudos oficiales de los equipos de la Kings
+                    League Americas. Debajo, la sección de producto estrella — el Kingssmart smartwatch 44mm con precio,
+                    cantidad, botón de compra y opciones de pago (PayPal, Amex, MasterCard, Visa).</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap4.png" alt="Colecciones por serie">
+                <p class="screenshot-caption">03 — COLECCIONES POR SERIE</p>
+                <p class="screenshot-desc">Sistema de filtrado por serie: Icon Series, Performance Series y Street
+                    Series. Cada colección muestra sus relojes con precio original tachado y precio de oferta —
+                    estrategia de pricing visual para impulsar conversión.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap5.png" alt="Catálogo completo de productos">
+                <p class="screenshot-caption">04 — CATÁLOGO COMPLETO</p>
+                <p class="screenshot-desc">Grid de productos con fotografías de alta calidad sobre fondo blanco para
+                    destacar el diseño de cada reloj. Badges de oferta, precios claros y botones de "Agregar al carrito"
+                    en cada tarjeta para reducir fricción en el proceso de compra.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap6.png" alt="Sección de reseñas verificadas">
+                <p class="screenshot-caption">05 — PRUEBA SOCIAL — RESEÑAS VERIFICADAS</p>
+                <p class="screenshot-desc">Sección "Lo que dicen nuestros clientes" con reseñas reales verificadas,
+                    fotos del producto en uso y calificación de 5 estrellas. La prueba social con imágenes reales genera
+                    confianza y reduce la tasa de abandono en checkout.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap7.png" alt="Propuesta de valor y footer">
+                <p class="screenshot-caption">06 — PROPUESTA DE VALOR + FOOTER</p>
+                <p class="screenshot-desc">Sección "Diseñados para la grandeza" con 3 pilares: Diseño Exclusivo,
+                    Garantía Oficial y Materiales de Calidad — cada uno con imagen y descripción. Footer con trust
+                    signals: Envíos Nacionales, Producto Oficial, Pago Seguro y Atención al Cliente. Newsletter para
+                    captación de leads.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap8.png" alt="Página de colección filtrada">
+                <p class="screenshot-caption">07 — PÁGINA DE COLECCIÓN CON FILTROS</p>
+                <p class="screenshot-desc">Vista de catálogo completo con 10 productos, sistema de filtrado por
+                    Disponibilidad y Precio, y ordenamiento alfabético. Diseño responsive con grid adaptable que
+                    mantiene la calidad visual en todos los dispositivos.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/KingsLeague/cap11.png" alt="Búsqueda predictiva">
+                <p class="screenshot-caption">08 — BÚSQUEDA PREDICTIVA</p>
+                <p class="screenshot-desc">Sistema de búsqueda inteligente con resultados predictivos en tiempo real. Al
+                    escribir una letra aparecen los productos relevantes con imagen y nombre — mejora la experiencia de
+                    usuario y reduce el tiempo de búsqueda.</p>
+            </div>
+
+        </div>
+
+        <!-- STACK TÉCNICO -->
+        <div class="case-section">
+            <h2>// STACK TÉCNICO</h2>
+            <p><strong style="color:#FF5621">Shopify + Liquid:</strong> Desarrollo del tema personalizado usando el
+                lenguaje de plantillas de Shopify. Configuración de colecciones, productos, metafields y secciones
+                dinámicas editables desde el admin.</p>
+            <p><strong style="color:#FF5621">JavaScript ES6+:</strong> Lógica del carrusel de equipos con scroll
+                infinito, slider de reseñas, búsqueda predictiva y animaciones de la barra de beneficios.</p>
+            <p><strong style="color:#FF5621">HTML5/CSS3:</strong> Maquetado responsive con grid y flexbox. Paleta de
+                colores negro/dorado alineada al branding oficial de Kings League Americas. Optimización de imágenes en
+                formato WebP para mejorar tiempos de carga.</p>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="case-cta">
+            <a href="https://kingsleaguerelojes.com" target="_blank" class="btn-primary">
+                Ver sitio en vivo →
+            </a>
+            <a href="https://github.com/Baltazardv/KingsLeagueShopify" target="_blank" class="btn-secondary">
+                GitHub →
+            </a>
+            <a href="web.html" class="btn-secondary">
+                ← Volver a proyectos
+            </a>
+        </div>
+
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

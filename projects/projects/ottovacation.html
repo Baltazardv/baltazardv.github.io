@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otto Vacation Rentals — Baltazar DV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .case-study {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .case-hero {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .case-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .case-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-header .case-subtitle {
+            color: rgba(246, 246, 246, 0.45);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-header p {
+            color: rgba(246, 246, 246, 0.6);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .case-section {
+            margin-bottom: 3rem;
+        }
+
+        .case-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 86, 33, 0.25);
+        }
+
+        .case-section p {
+            color: rgba(246, 246, 246, 0.75);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .screenshot-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .screenshot-block img {
+            width: 100%;
+            border: 1px solid rgba(255, 86, 33, 0.2);
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .screenshot-block img:hover {
+            border-color: #FF5621;
+        }
+
+        .screenshot-caption {
+            color: #FF5621;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .screenshot-desc {
+            color: rgba(246, 246, 246, 0.6);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            padding: 1rem;
+            text-align: center;
+            background: rgba(255, 86, 33, 0.04);
+        }
+
+        .metric-number {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .metric-label {
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.72rem;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        .results-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .results-list li {
+            color: rgba(246, 246, 246, 0.75);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.82rem;
+            padding-left: 0;
+            line-height: 1.6;
+        }
+
+        .learnings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .learning-item {
+            border: 1px solid rgba(255, 86, 33, 0.2);
+            padding: 1rem;
+            background: rgba(255, 86, 33, 0.03);
+        }
+
+        .learning-item strong {
+            color: #FF5621;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.72rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .learning-item p {
+            margin: 0;
+            font-size: 0.78rem;
+        }
+
+        .case-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 86, 33, 0.2);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #FF5621;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CRT Effects -->
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../index.html"
+                style="font-family:'Orbitron',sans-serif;color:#FF5621;text-decoration:none;font-size:1.1rem;font-weight:700;">BD<span
+                    class="blink">_</span></a>
+            <ul class="nav-links">
+                <li><a href="web.html">&lt; RETURN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="case-study">
+
+        <a href="web.html" class="back-link">← Volver a proyectos web</a>
+
+        <!-- HERO -->
+        <img src="../assets/OttoVacionalsRentals/cap1.png" alt="Otto Vacation Rentals Hero" class="case-hero">
+
+        <!-- HEADER -->
+        <div class="case-header">
+            <h1>Otto Vacation Rentals</h1>
+            <p class="case-subtitle">Landing Page · E-commerce · Cliente Real — OK Latino</p>
+            <div class="case-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript ES6</span>
+                <span class="tag">GitHub Pages</span>
+                <span class="tag">Responsive Design</span>
+                <span class="tag">Intersection Observer API</span>
+            </div>
+            <p>Landing page profesional para empresa de vacation rentals en Texas — desarrollada con HTML, CSS y
+                JavaScript puro, sin frameworks ni costos de hosting. Compite directamente con plataformas como Airbnb y
+                VRBO con una experiencia de usuario fluida y orientada a conversión.</p>
+            <div class="project-actions" style="margin-top:1.25rem">
+                <a href="https://oklatino.github.io/ottovacationrentals/" target="_blank" class="btn-primary">Ver Demo
+                    en Vivo →</a>
+                <a href="https://github.com/OkLatino/ottovacationrentals" target="_blank" class="btn-secondary">Ver
+                    Código →</a>
+            </div>
+        </div>
+
+        <!-- EL PROBLEMA -->
+        <div class="case-section">
+            <h2>// EL PROBLEMA</h2>
+            <p>La clienta necesitaba una presencia digital profesional para competir con plataformas como Airbnb y VRBO
+                en el mercado de Texas. No contaba con sitio web propio y perdía clientes potenciales. El reto fue
+                construir algo visualmente competitivo usando solo HTML, CSS y JavaScript puro, sin frameworks ni costos
+                de hosting.</p>
+        </div>
+
+        <!-- MÉTRICAS -->
+        <div class="case-section">
+            <h2>// IMPACTO</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">25%</span>
+                    <span class="metric-label">Reducción tiempo de carga</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">100%</span>
+                    <span class="metric-label">Mobile-first responsive</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">9</span>
+                    <span class="metric-label">Secciones optimizadas</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">0</span>
+                    <span class="metric-label">Frameworks / dependencias</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALERÍA SECCIÓN POR SECCIÓN -->
+        <div class="case-section">
+            <h2>// SOLUCIÓN — SECCIÓN POR SECCIÓN</h2>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap1.png" alt="Hero: Discover Your Perfect Texas Getaway">
+                <p class="screenshot-caption">01 — HERO: DISCOVER YOUR PERFECT TEXAS GETAWAY</p>
+                <p class="screenshot-desc">Hero de pantalla completa con imagen de Austin al atardecer. Overlay oscuro
+                    gradual para garantizar legibilidad del copy sin perder el impacto visual de la ciudad. Tipografía
+                    bold de alto contraste como decisión clave de conversión.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap2.png" alt="Buscador + Destinos Populares">
+                <p class="screenshot-caption">02 — BUSCADOR + DESTINOS POPULARES</p>
+                <p class="screenshot-desc">Search bar con 4 campos (Location, Check-in, Check-out, Guests) posicionado
+                    inmediatamente después del hero para capturar intención de búsqueda. Cinco tarjetas de destinos con
+                    imagen y conteo de propiedades disponibles por ciudad.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap3.png" alt="Featured Properties (fila 1)">
+                <p class="screenshot-caption">03 — FEATURED PROPERTIES (FILA 1)</p>
+                <p class="screenshot-desc">Grid de property cards con imagen, ubicación, nombre, capacidad
+                    (bedrooms/baths/guests), rating con estrellas y precio por noche. Implementamos data-city attributes
+                    en cada card para habilitar filtrado dinámico con JavaScript puro.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap4.png" alt="Featured Properties (fila 2)">
+                <p class="screenshot-caption">04 — FEATURED PROPERTIES (FILA 2)</p>
+                <p class="screenshot-desc">Segunda fila del grid de propiedades. El precio destacado en rojo dirige la
+                    atención del usuario hacia el elemento de conversión principal. Layout responsive que colapsa a una
+                    columna en mobile.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap5.png" alt="Experiencia Texas">
+                <p class="screenshot-caption">05 — EXPERIENCIA TEXAS</p>
+                <p class="screenshot-desc">Layout de dos columnas: storytelling a la izquierda con copy emocional,
+                    imagen de ambiente (concierto en Austin) a la derecha. Esta sección complementa los datos anteriores
+                    con valor de marca y conexión emocional con el destino.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap6.png" alt="Stats + Why Choose Us">
+                <p class="screenshot-caption">06 — STATS + WHY CHOOSE US</p>
+                <p class="screenshot-desc">Cuatro métricas en grande: 1,500+ Happy Guests, 164 Premium Properties, 4.9
+                    Average Rating, 24/7 Support. Números en rojo como social proof. La alternancia de sección blanca a
+                    sección oscura guía el scroll y mantiene el engagement.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap7.png" alt="Why Choose Us completo">
+                <p class="screenshot-caption">07 — WHY CHOOSE US (COMPLETO)</p>
+                <p class="screenshot-desc">Grid de 6 features con iconos SVG en rojo: Verified Properties, 24/7 Support,
+                    Best Price Guarantee, Instant Booking, Local Expertise, Premium Quality. Fondo oscuro (#1a1a1a) para
+                    crear contraste visual con las secciones anteriores.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap8.png" alt="Testimonials">
+                <p class="screenshot-caption">08 — TESTIMONIALS</p>
+                <p class="screenshot-desc">Tres tarjetas de reviews con foto circular del usuario, nombre, contexto del
+                    viaje y texto en itálica. Social proof visual que genera confianza antes del CTA final de
+                    newsletter.</p>
+            </div>
+
+            <div class="screenshot-block">
+                <img src="../assets/OttoVacionalsRentals/cap9.png" alt="Newsletter + Footer">
+                <p class="screenshot-caption">09 — NEWSLETTER + FOOTER</p>
+                <p class="screenshot-desc">CTA de suscripción con fondo rojo para máximo contraste y captura de email
+                    con validación client-side mediante regex + toast notification. Footer de 4 columnas: contacto,
+                    destinos, soporte y host — estructura SEO-friendly.</p>
+            </div>
+        </div>
+
+        <!-- RESULTADOS -->
+        <div class="case-section">
+            <h2>// RESULTADOS</h2>
+            <ul class="results-list">
+                <li>✅ 25% reducción en tiempo de carga (lazy loading + optimización de assets)</li>
+                <li>✅ Diseño 100% responsive mobile-first</li>
+                <li>✅ Filtrado dinámico de propiedades por ciudad (JavaScript ES6)</li>
+                <li>✅ Validación de formularios client-side (0 envíos vacíos)</li>
+                <li>✅ Scroll animations con Intersection Observer API</li>
+                <li>✅ Deploy automático con GitHub Pages</li>
+            </ul>
+        </div>
+
+        <!-- STACK TÉCNICO -->
+        <div class="case-section">
+            <h2>// STACK TÉCNICO</h2>
+            <p><strong style="color:#FF5621">HTML5:</strong> Marcado semántico con elementos correctos para
+                accesibilidad y SEO. Data attributes para habilitar filtrado dinámico sin librerías externas.</p>
+            <p><strong style="color:#FF5621">CSS3:</strong> Grid y Flexbox para layouts responsivos. Variables CSS para
+                mantener coherencia de paleta. Animaciones y transiciones nativas sin dependencias.</p>
+            <p><strong style="color:#FF5621">JavaScript ES6+:</strong> Filtrado dinámico de propiedades, Intersection
+                Observer API para scroll animations, validación de formularios con regex y toast notifications.</p>
+            <p><strong style="color:#FF5621">GitHub Pages:</strong> Deploy automático desde rama main — 0 costos de
+                hosting para el cliente, actualizaciones instantáneas.</p>
+        </div>
+
+        <!-- APRENDIZAJES -->
+        <div class="case-section">
+            <h2>// APRENDIZAJES CLAVE</h2>
+            <div class="learnings-grid">
+                <div class="learning-item">
+                    <strong>CONVERSIÓN PRIMERO</strong>
+                    <p class="screenshot-desc">CTAs estratégicos, social proof visible y precio prominente como
+                        principios de diseño, no decoración.</p>
+                </div>
+                <div class="learning-item">
+                    <strong>PERFORMANCE VS. ESTÉTICA</strong>
+                    <p class="screenshot-desc">Balancear imágenes de alto impacto con lazy loading y formatos
+                        optimizados para no sacrificar velocidad.</p>
+                </div>
+                <div class="learning-item">
+                    <strong>CLIENTE REAL</strong>
+                    <p class="screenshot-desc">Gestión de proyecto con iteración basada en feedback directo —
+                        comunicación, adaptación y entregables concretos.</p>
+                </div>
+                <div class="learning-item">
+                    <strong>VANILLA JS</strong>
+                    <p class="screenshot-desc">JavaScript puro para filtrado dinámico demuestra que no siempre se
+                        necesita un framework para lograr interactividad avanzada.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="case-cta">
+            <a href="https://oklatino.github.io/ottovacationrentals/" target="_blank" class="btn-primary">
+                Ver Demo en Vivo →
+            </a>
+            <a href="https://github.com/OkLatino/ottovacationrentals" target="_blank" class="btn-secondary">
+                GitHub →
+            </a>
+            <a href="web.html" class="btn-secondary">
+                ← Volver a proyectos
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p data-i18n="footer">SYS.COPYRIGHT © 2026 BALTAZAR DIMAYUGA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
