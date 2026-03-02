@@ -23,112 +23,113 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
-            <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
-                <img src="images/logo.webp" alt="Logo" style="width: 45px; height: auto;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" style="width: 140px; height: auto;">
-                    <defs>
-                        <!-- Naranja principal -->
-                        <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#FF5621;stop-opacity:1" />
-                        </linearGradient>
+            <a href="index.html" class="nav-logo" style="text-decoration:none;">
+                <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="images/logo.webp" alt="Logo" style="width: 45px; height: auto;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" style="width: 140px; height: auto;">
+                        <defs>
+                            <!-- Naranja principal -->
+                            <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF5621;stop-opacity:1" />
+                            </linearGradient>
 
-                        <!-- Glow naranja para el texto -->
-                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
-                            <feMerge>
-                                <feMergeNode in="coloredBlur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
+                            <!-- Glow naranja para el texto -->
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
 
-                        <!-- Glow suave para detalles -->
-                        <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-                            <feMerge>
-                                <feMergeNode in="coloredBlur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
+                            <!-- Glow suave para detalles -->
+                            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
 
-                        <!-- Clip para el scanner line -->
-                        <clipPath id="logoClip">
-                            <rect x="0" y="0" width="200" height="60" />
-                        </clipPath>
-                    </defs>
+                            <!-- Clip para el scanner line -->
+                            <clipPath id="logoClip">
+                                <rect x="0" y="0" width="200" height="60" />
+                            </clipPath>
+                        </defs>
 
-                    <!-- Fondo negro -->
-                    <rect width="200" height="60" fill="transparent" />
+                        <!-- Fondo negro -->
+                        <rect width="200" height="60" fill="transparent" />
 
-                    <!-- Marco exterior con esquinas cortadas — estilo cyberpunk -->
-                    <!-- Esquina superior izquierda cortada -->
-                    <polygon points="8,0 200,0 200,60 0,60 0,8" fill="none" stroke="#FF5621" stroke-width="1"
-                        opacity="0.6" />
+                        <!-- Marco exterior con esquinas cortadas — estilo cyberpunk -->
+                        <!-- Esquina superior izquierda cortada -->
+                        <polygon points="8,0 200,0 200,60 0,60 0,8" fill="none" stroke="#FF5621" stroke-width="1"
+                            opacity="0.6" />
 
-                    <!-- Detalle esquina superior izquierda -->
-                    <polyline points="0,14 0,8 8,0 18,0" fill="none" stroke="#FF5621" stroke-width="1.5"
-                        opacity="0.9" />
-                    <!-- Detalle esquina inferior derecha -->
-                    <polyline points="200,46 200,52 194,60 178,60" fill="none" stroke="#FF5621" stroke-width="1.5"
-                        opacity="0.9" />
+                        <!-- Detalle esquina superior izquierda -->
+                        <polyline points="0,14 0,8 8,0 18,0" fill="none" stroke="#FF5621" stroke-width="1.5"
+                            opacity="0.9" />
+                        <!-- Detalle esquina inferior derecha -->
+                        <polyline points="200,46 200,52 194,60 178,60" fill="none" stroke="#FF5621" stroke-width="1.5"
+                            opacity="0.9" />
 
-                    <!-- Línea horizontal decorativa superior -->
-                    <line x1="8" y1="4" x2="80" y2="4" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
-                    <!-- Línea horizontal decorativa inferior -->
-                    <line x1="120" y1="56" x2="192" y2="56" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
+                        <!-- Línea horizontal decorativa superior -->
+                        <line x1="8" y1="4" x2="80" y2="4" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
+                        <!-- Línea horizontal decorativa inferior -->
+                        <line x1="120" y1="56" x2="192" y2="56" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
 
-                    <!-- Líneas de scan verticales muy sutiles -->
-                    <line x1="25" y1="8" x2="25" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
-                    <line x1="50" y1="8" x2="50" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
-                    <line x1="75" y1="8" x2="75" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
-                    <line x1="100" y1="8" x2="100" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
-                    <line x1="125" y1="8" x2="125" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
-                    <line x1="150" y1="8" x2="150" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
-                    <line x1="175" y1="8" x2="175" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <!-- Líneas de scan verticales muy sutiles -->
+                        <line x1="25" y1="8" x2="25" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="50" y1="8" x2="50" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="75" y1="8" x2="75" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="100" y1="8" x2="100" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="125" y1="8" x2="125" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="150" y1="8" x2="150" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="175" y1="8" x2="175" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
 
-                    <!-- Separador vertical entre BD y _ -->
-                    <line x1="130" y1="14" x2="130" y2="46" stroke="#FF5621" stroke-width="0.5" opacity="0.3" />
+                        <!-- Separador vertical entre BD y _ -->
+                        <line x1="130" y1="14" x2="130" y2="46" stroke="#FF5621" stroke-width="0.5" opacity="0.3" />
 
-                    <!-- TEXTO PRINCIPAL: BD_ -->
-                    <!-- Fuente monospace condensada, estilo terminal -->
-                    <text x="18" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
-                        font-weight="700" letter-spacing="-1" fill="url(#orangeGrad)" filter="url(#glow)">BD</text>
+                        <!-- TEXTO PRINCIPAL: BD_ -->
+                        <!-- Fuente monospace condensada, estilo terminal -->
+                        <text x="18" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
+                            font-weight="700" letter-spacing="-1" fill="url(#orangeGrad)" filter="url(#glow)">BD</text>
 
-                    <!-- El guión bajo parpadeante -->
-                    <text x="136" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
-                        font-weight="700" fill="#FF5621" filter="url(#glow)" opacity="1">
-                        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />_
-                    </text>
+                        <!-- El guión bajo parpadeante -->
+                        <text x="136" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
+                            font-weight="700" fill="#FF5621" filter="url(#glow)" opacity="1">
+                            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />_
+                        </text>
 
-                    <!-- Micro texto inferior: DATA ANALYST -->
-                    <text x="18" y="55" font-family="'Courier New', 'Lucida Console', monospace" font-size="6"
-                        letter-spacing="3.5" fill="#FF5621" opacity="0.55">DATA ANALYST</text>
+                        <!-- Micro texto inferior: DATA ANALYST -->
+                        <text x="18" y="55" font-family="'Courier New', 'Lucida Console', monospace" font-size="6"
+                            letter-spacing="3.5" fill="#FF5621" opacity="0.55">DATA ANALYST</text>
 
-                    <!-- Punto decorativo superior derecha -->
-                    <circle cx="188" cy="10" r="2" fill="#FF5621" opacity="0.7" filter="url(#softGlow)" />
-                    <circle cx="188" cy="10" r="1" fill="#FF8C5A" opacity="0.9" />
+                        <!-- Punto decorativo superior derecha -->
+                        <circle cx="188" cy="10" r="2" fill="#FF5621" opacity="0.7" filter="url(#softGlow)" />
+                        <circle cx="188" cy="10" r="1" fill="#FF8C5A" opacity="0.9" />
 
-                    <!-- Pequeño indicador "online" -->
-                    <circle cx="176" cy="10" r="1.5" fill="#FF5621" opacity="0.5" />
+                        <!-- Pequeño indicador "online" -->
+                        <circle cx="176" cy="10" r="1.5" fill="#FF5621" opacity="0.5" />
 
-                    <!-- Línea decorativa después del texto -->
-                    <line x1="155" y1="44" x2="190" y2="44" stroke="#FF5621" stroke-width="0.5" opacity="0.25" />
-                    <line x1="160" y1="47" x2="190" y2="47" stroke="#FF5621" stroke-width="0.5" opacity="0.15" />
-                </svg>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about" data-text="ABOUT" data-i18n="nav_about">ABOUT</a></li>
-                <li><a href="#skills" data-text="SKILLS" data-i18n="nav_skills">SKILLS</a></li>
-                <li><a href="#experience" data-text="EXPERIENCE" data-i18n="nav_experience">EXPERIENCE</a></li>
-                <li><a href="#projects" data-text="PROJECTS" data-i18n="nav_projects">PROJECTS</a></li>
-                <li><a href="#impact" data-text="IMPACT" data-i18n="nav_impact">IMPACT</a></li>
-                <li><a href="#contact" data-text="CONTACT" data-i18n="nav_contact">CONTACT</a></li>
-                <li class="lang-switch">
-                    <button id="lang-es" class="lang-btn active">🇲🇽 ES</button> |
-                    <button id="lang-en" class="lang-btn">🇺🇸 EN</button>
-                </li>
-            </ul>
-            <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">☰</button>
+                        <!-- Línea decorativa después del texto -->
+                        <line x1="155" y1="44" x2="190" y2="44" stroke="#FF5621" stroke-width="0.5" opacity="0.25" />
+                        <line x1="160" y1="47" x2="190" y2="47" stroke="#FF5621" stroke-width="0.5" opacity="0.15" />
+                    </svg>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about" data-text="ABOUT" data-i18n="nav_about">ABOUT</a></li>
+                    <li><a href="#skills" data-text="SKILLS" data-i18n="nav_skills">SKILLS</a></li>
+                    <li><a href="#experience" data-text="EXPERIENCE" data-i18n="nav_experience">EXPERIENCE</a></li>
+                    <li><a href="#projects" data-text="PROJECTS" data-i18n="nav_projects">PROJECTS</a></li>
+                    <li><a href="#impact" data-text="IMPACT" data-i18n="nav_impact">IMPACT</a></li>
+                    <li><a href="#contact" data-text="CONTACT" data-i18n="nav_contact">CONTACT</a></li>
+                    <li class="lang-switch">
+                        <button id="lang-es" class="lang-btn active">🇲🇽 ES</button> |
+                        <button id="lang-en" class="lang-btn">🇺🇸 EN</button>
+                    </li>
+                </ul>
+                <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">☰</button>
         </div>
     </nav>
 
