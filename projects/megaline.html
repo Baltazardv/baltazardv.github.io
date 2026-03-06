@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecom Operator Analysis — Baltazar DV</title>
+    <title>Megaline Tariff Analysis — Baltazar DV</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
@@ -117,7 +117,6 @@
             width: 100%;
             max-width: 100%;
             height: auto;
-            min-height: 350px;
             object-fit: cover;
             border: 1px solid #FF5621;
             box-shadow: 0 0 30px rgba(255, 86, 33, 0.4);
@@ -137,21 +136,21 @@
 
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
         .metric-card {
             border: 1px solid rgba(255, 86, 33, 0.3);
-            padding: 1rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             background: rgba(255, 86, 33, 0.04);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 120px;
+            min-height: 140px;
         }
 
         .metric-card.significant {
@@ -166,16 +165,16 @@
         .metric-number {
             font-family: 'Orbitron', sans-serif;
             color: #FF5621;
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .metric-label {
-            color: rgba(246, 246, 246, 0.5);
+            color: rgba(246, 246, 246, 0.7);
             font-family: 'Share Tech Mono', monospace;
-            font-size: 0.72rem;
-            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            line-height: 1.4;
             display: block;
         }
 
@@ -335,15 +334,15 @@
 
         <!-- HEADER -->
         <div class="case-header">
-            <h1>TELECOM_OPERATOR_ANALYSIS</h1>
-            <p>// Identificación de operadores ineficaces en call center</p>
+            <h1>MEGALINE_TARIFF_ANALYSIS</h1>
+            <p>// Optimización de ingresos: Surf vs Ultimate</p>
             <div class="case-tags">
                 <span class="tag">Python</span>
                 <span class="tag">Pandas</span>
-                <span class="tag">Seaborn</span>
-                <span class="tag">Mann-Whitney U</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">SciPy</span>
                 <span class="tag">Pruebas de Hipótesis</span>
-                <span class="tag">Tableau</span>
+                <span class="tag">EDA</span>
             </div>
         </div>
 
@@ -352,12 +351,13 @@
         <!-- SECCIÓN: EL PROBLEMA -->
         <div class="case-section">
             <h2>// EL PROBLEMA</h2>
-            <p>Una empresa de telecomunicaciones con un call center de cientos de operadores necesitaba responder una
-                pregunta crítica: ¿quiénes están tirando llamadas y afectando la experiencia del cliente? Sin esa
-                información, capacitar a todos era costoso e ineficiente. El reto era identificar, con evidencia
-                estadística, cuáles operadores tenían bajo rendimiento para priorizar acciones de mejora.</p>
+            <p>Megaline, operador de telecomunicaciones, ofrece dos tarifas de prepago: Surf y Ultimate. El departamento
+                comercial necesitaba responder una pregunta crítica antes de asignar el presupuesto publicitario de
+                2019: ¿cuál tarifa genera más ingresos? Sin evidencia estadística, cualquier decisión de inversión era
+                una apuesta. El objetivo fue analizar el comportamiento real de 500 clientes durante 2018 y determinar
+                con pruebas de hipótesis qué tarifa debía recibir mayor inversión publicitaria.</p>
 
-            <img src="../assets/Telecom/telecom_img_01.webp" alt="Call Center Dashboard - Contexto del problema"
+            <img src="../assets/Megaline/megaline_img_01.webp" alt="Megaline - Contexto Surf vs Ultimate"
                 class="project-img">
         </div>
 
@@ -366,12 +366,14 @@
         <!-- SECCIÓN: LOS DATOS -->
         <div class="case-section">
             <h2>// LOS DATOS</h2>
-            <p>El dataset contenía registros de llamadas por operador: llamadas entrantes, salientes, internas, tiempo
-                de espera, llamadas perdidas y si el operador era interno o externo. Antes de cualquier análisis,
-                realicé limpieza de datos, detección de nulos y outliers, y construí métricas derivadas como tasa de
-                llamadas perdidas por operador.</p>
+            <p>El análisis integró 5 datasets relacionados con 318,611 registros totales: usuarios, llamadas, mensajes,
+                consumo de internet y planes. Cada registro representaba una interacción real de cliente durante 2018.
+                El proceso incluyó limpieza profunda, cálculo de consumo mensual por usuario, lógica de excedentes
+                (cobro extra cuando se supera el límite del plan) y merge de las 5 tablas para construir el ingreso
+                total por cliente por mes.</p>
 
-            <img src="../assets/Telecom/telecom_img_02.webp" alt="Dataset Structure - EDA Overview" class="project-img">
+            <img src="../assets/Megaline/megaline_img_02.webp" alt="Dataset - 5 tablas relacionadas 318K registros"
+                class="project-img">
         </div>
 
         <div class="section-separator">// ————————————</div>
@@ -379,16 +381,16 @@
         <!-- SECCIÓN: EL ANÁLISIS -->
         <div class="case-section">
             <h2>// EL ANÁLISIS</h2>
-            <p>Definí "operador ineficaz" como aquel con una tasa de llamadas perdidas estadísticamente superior al
-                promedio del grupo. Usé la prueba Mann-Whitney U (no paramétrica) porque la distribución no era normal.
-                Esto me permitió comparar grupos sin asumir distribución gaussiana y validar que las diferencias
-                observadas no eran producto del azar.</p>
+            <p>Definí dos hipótesis estadísticas: primero, si los ingresos promedio de usuarios Ultimate y Surf son
+                iguales; segundo, si los ingresos en NY-NJ difieren del resto de regiones. Usé la prueba t de Student
+                (scipy.stats) porque comparaba medias de dos grupos independientes. Calculé consumo real vs límites del
+                plan para identificar quién generaba excedentes y cuánto. El umbral de significancia fue α = 0.05.</p>
 
-            <img src="../assets/Telecom/telecom_img_03.webp" alt="Distribución de llamadas perdidas por operador"
+            <img src="../assets/Megaline/megaline_img_03.webp" alt="Patrones de uso comparativo Surf vs Ultimate"
                 class="project-img">
 
-            <img src="../assets/Telecom/telecom_img_04.webp"
-                alt="Boxplot comparativo - Operadores eficaces vs ineficaces" class="project-img">
+            <img src="../assets/Megaline/megaline_img_04.webp" alt="Distribución de ingresos y prueba de hipótesis"
+                class="project-img">
         </div>
 
         <div class="section-separator">// ————————————</div>
@@ -396,13 +398,15 @@
         <!-- SECCIÓN: LOS HALLAZGOS -->
         <div class="case-section">
             <h2>// LOS HALLAZGOS</h2>
-            <p>De 1,000+ operadores analizados, 202 fueron clasificados como ineficaces — representando el 18.5% del
-                total. Las diferencias en tasa de llamadas perdidas entre el grupo ineficaz y el resto fueron
-                estadísticamente significativas (p &lt; 0.05). Los operadores externos mostraron mayor concentración en
-                el grupo de bajo rendimiento.</p>
+            <p>Ultimate genera $72.31 promedio mensual vs $60.71 de Surf — una diferencia de 19.1% estadísticamente
+                significativa (p < 0.0001). Pero el hallazgo más crítico fue el comportamiento de Surf: el 72% de sus
+                    usuarios excede el límite de datos mensualmente, generando $40.55 extra en promedio. Surf tiene alta
+                    variabilidad ($55.38 desv. est.) vs Ultimate que es predecible ($11.40 desv. est.). Adicionalmente,
+                    los ingresos en la región NY-NJ son significativamente diferentes al resto del país (p=0.0335),
+                    sugiriendo necesidad de estrategia regional.</p>
 
-            <img src="../assets/Telecom/telecom_img_05.webp" alt="Dashboard final - Operadores clasificados"
-                class="project-img">
+                    <img src="../assets/Megaline/megaline_img_05.webp" alt="Dashboard final de recomendaciones"
+                        class="project-img">
         </div>
 
         <div class="section-separator">// ————————————</div>
@@ -411,26 +415,33 @@
         <div class="case-section">
             <h2>// RESULTADO</h2>
             <div class="metrics-grid">
-                <div class="metric-card">
-                    <span class="metric-number" style="font-size: 2rem;">202</span>
-                    <span class="metric-label" style="font-size: 0.85rem; margin-top: 0.5rem;">Operadores ineficaces
-                        identificados — 18.5% del total</span>
-                </div>
                 <div class="metric-card significant">
-                    <span class="metric-number" style="font-size: 2rem;">p &lt; 0.05</span>
-                    <span class="metric-label" style="font-size: 0.85rem; margin-top: 0.5rem;">Diferencias
-                        estadísticamente significativas</span>
+                    <span class="metric-number">+19.1%</span>
+                    <span class="metric-label">Ultimate genera 19.1% más ingresos — $72.31 vs $60.71</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">72%</span>
+                    <span class="metric-label">De usuarios Surf exceden límite de datos — $40.55 extra promedio</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">p = 0.0335</span>
+                    <span class="metric-label">Diferencia regional NY-NJ detectada</span>
                 </div>
             </div>
         </div>
 
         <!-- CTA FINAL -->
         <div class="case-cta">
-            <a href="https://nbviewer.org/github/Baltazardv/telecom-operator-analysis/blob/main/Proyecto_Final_Operadores_Ineficaces.ipynb"
-                target="_blank" class="btn-primary">Ver análisis completo →</a>
-            <a href="https://github.com/Baltazardv/telecom-operator-analysis" target="_blank" class="btn-secondary">Ver
-                en GitHub →</a>
-            <a href="data.html" class="btn-secondary">← Volver a proyectos</a>
+            <a href="https://nbviewer.org/github/Baltazardv/analisis-megaline-tarifas/blob/main/proyecto_5_megaline_limpio.ipynb"
+                target="_blank" class="btn-primary">
+                Ver análisis completo →
+            </a>
+            <a href="https://github.com/Baltazardv/analisis-megaline-tarifas" target="_blank" class="btn-secondary">
+                Ver en GitHub →
+            </a>
+            <a href="data.html" class="btn-secondary">
+                ← Volver a proyectos
+            </a>
         </div>
 
     </main>

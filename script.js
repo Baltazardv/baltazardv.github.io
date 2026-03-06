@@ -9,6 +9,11 @@ var projectsData = {
         title: "Identificación de Operadores Ineficaces — Telecom Analysis",
         github: "https://github.com/Baltazardv/telecom-operator-analysis",
         notebook: "https://nbviewer.org/github/Baltazardv/telecom-operator-analysis/blob/main/Proyecto_Final_Operadores_Ineficaces.ipynb"
+    },
+    megaline: {
+        title: "Análisis Estadístico de Tarifas — Megaline",
+        github: "https://github.com/Baltazardv/analisis-megaline-tarifas",
+        notebook: "https://nbviewer.org/github/Baltazardv/analisis-megaline-tarifas/blob/main/proyecto_5_megaline_limpio.ipynb"
     }
     // Aquí se añadirán más proyectos después
 };
