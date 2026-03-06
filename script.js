@@ -16,7 +16,7 @@ var projectsData = {
         notebook: "https://nbviewer.org/github/Baltazardv/analisis-megaline-tarifas/blob/main/proyecto_5_megaline_limpio.ipynb"
     },
     instacart: {
-        title: "Instacart Order Analysis",
+        title: "Análisis de Patrones de Compra — Instacart",
         github: "https://github.com/Baltazardv/analisis-instacart-pedidos",
         notebook: "https://nbviewer.org/github/Baltazardv/analisis-instacart-pedidos/blob/main/proyecto_4_instacart_limpio.ipynb"
     }
