@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instacart Order Analysis — Baltazar DV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .case-study {
+            max-width: 900px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .case-hero {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .case-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .case-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .case-header p {
+            color: rgba(246, 246, 246, 0.6);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .case-section {
+            margin-bottom: 3rem;
+        }
+
+        .case-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 86, 33, 0.25);
+            text-transform: uppercase;
+        }
+
+        .case-section p {
+            color: rgba(246, 246, 246, 0.75);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Image Placeholder Style */
+        .img-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background-color: #050505;
+            border: 1px solid rgba(0, 255, 65, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            color: #00ff41;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .img-placeholder:hover {
+            border-color: #00ff41;
+            box-shadow: inset 0 0 30px rgba(0, 255, 65, 0.15);
+        }
+
+        .img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px);
+        }
+
+        .project-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: 1px solid #FF5621;
+            box-shadow: 0 0 30px rgba(255, 86, 33, 0.4);
+            display: block;
+            margin: 32px auto;
+            border-radius: 4px;
+        }
+
+        .section-separator {
+            color: rgba(255, 86, 33, 0.4);
+            font-family: 'Share Tech Mono', monospace;
+            text-align: center;
+            margin: 3.5rem 0;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            background: rgba(255, 86, 33, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 140px;
+        }
+
+        .metric-card.significant {
+            border-color: rgba(0, 255, 65, 0.3);
+            background: rgba(0, 255, 65, 0.04);
+        }
+
+        .metric-card.significant .metric-number {
+            color: #00ff41;
+        }
+
+        .metric-number {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .metric-label {
+            color: rgba(246, 246, 246, 0.7);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            display: block;
+        }
+
+        .case-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 86, 33, 0.2);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #FF5621;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CRT Effects -->
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../index.html" class="nav-logo" style="text-decoration:none;">
+                <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="../assets/logo_bd_rabbit.svg" alt="Logo" style="height: 45px; width: auto;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" style="width: 140px; height: auto;">
+                        <defs>
+                            <!-- Naranja principal -->
+                            <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF5621;stop-opacity:1" />
+                            </linearGradient>
+
+                            <!-- Glow naranja para el texto -->
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+
+                            <!-- Glow suave para detalles -->
+                            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+
+                            <!-- Clip para el scanner line -->
+                            <clipPath id="logoClip">
+                                <rect x="0" y="0" width="200" height="60" />
+                            </clipPath>
+                        </defs>
+
+                        <!-- Fondo negro -->
+                        <rect width="200" height="60" fill="transparent" />
+
+                        <!-- Marco exterior con esquinas cortadas — estilo cyberpunk -->
+                        <!-- Esquina superior izquierda cortada -->
+                        <polygon points="8,0 200,0 200,60 0,60 0,8" fill="none" stroke="#FF5621" stroke-width="1"
+                            opacity="0.6" />
+
+                        <!-- Detalle esquina superior izquierda -->
+                        <polyline points="0,14 0,8 8,0 18,0" fill="none" stroke="#FF5621" stroke-width="1.5"
+                            opacity="0.9" />
+                        <!-- Detalle esquina inferior derecha -->
+                        <polyline points="200,46 200,52 194,60 178,60" fill="none" stroke="#FF5621" stroke-width="1.5"
+                            opacity="0.9" />
+
+                        <!-- Línea horizontal decorativa superior -->
+                        <line x1="8" y1="4" x2="80" y2="4" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
+                        <!-- Línea horizontal decorativa inferior -->
+                        <line x1="120" y1="56" x2="192" y2="56" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
+
+                        <!-- Líneas de scan verticales muy sutiles -->
+                        <line x1="25" y1="8" x2="25" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="50" y1="8" x2="50" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="75" y1="8" x2="75" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="100" y1="8" x2="100" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="125" y1="8" x2="125" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="150" y1="8" x2="150" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="175" y1="8" x2="175" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+
+                        <!-- Separador vertical entre BD y _ -->
+                        <line x1="130" y1="14" x2="130" y2="46" stroke="#FF5621" stroke-width="0.5" opacity="0.3" />
+
+                        <!-- TEXTO PRINCIPAL: BD_ -->
+                        <!-- Fuente monospace condensada, estilo terminal -->
+                        <text x="18" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
+                            font-weight="700" letter-spacing="-1" fill="url(#orangeGrad)" filter="url(#glow)">BD</text>
+
+                        <!-- El guión bajo parpadeante -->
+                        <text x="136" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
+                            font-weight="700" fill="#FF5621" filter="url(#glow)" opacity="1">
+                            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />_
+                        </text>
+
+                        <!-- Micro texto inferior: DATA ANALYST -->
+                        <text x="18" y="55" font-family="'Courier New', 'Lucida Console', monospace" font-size="6"
+                            letter-spacing="3.5" fill="#FF5621" opacity="0.55">DATA ANALYST</text>
+
+                        <!-- Punto decorativo superior derecha -->
+                        <circle cx="188" cy="10" r="2" fill="#FF5621" opacity="0.7" filter="url(#softGlow)" />
+                        <circle cx="188" cy="10" r="1" fill="#FF8C5A" opacity="0.9" />
+
+                        <!-- Pequeño indicador "online" -->
+                        <circle cx="176" cy="10" r="1.5" fill="#FF5621" opacity="0.5" />
+
+                        <!-- Línea decorativa después del texto -->
+                        <line x1="155" y1="44" x2="190" y2="44" stroke="#FF5621" stroke-width="0.5" opacity="0.25" />
+                        <line x1="160" y1="47" x2="190" y2="47" stroke="#FF5621" stroke-width="0.5" opacity="0.15" />
+                    </svg>
+                </div>
+            </a>
+            <div class="header-nav-btns">
+                <a href="../index.html" class="back-home-btn">← INICIO</a>
+                <a href="javascript:history.back()" class="return-btn">&lt; RETURN</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="case-study">
+
+        <a href="data.html" class="back-link">← Volver a proyectos de datos</a>
+
+        <!-- HEADER -->
+        <div class="case-header">
+            <h1>INSTACART_ORDER_ANALYSIS</h1>
+            <p>// Patrones de compra en plataforma de comestibles</p>
+            <div class="case-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">EDA</span>
+                <span class="tag">Data Wrangling</span>
+                <span class="tag">Análisis de Patrones</span>
+            </div>
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: EL PROBLEMA -->
+        <div class="case-section">
+            <h2>// EL PROBLEMA</h2>
+            <p>Instacart necesitaba entender cómo, cuándo y qué compraban sus usuarios para optimizar inventario,
+                logística y campañas de marketing. Con millones de transacciones acumuladas, el reto era transformar ese
+                volumen de datos en patrones accionables: ¿qué día dimensionar más entregas? ¿qué productos garantizar
+                en stock? ¿cómo personalizar recomendaciones?</p>
+
+            <div class="img-placeholder">
+                // IMG_01: contexto del negocio
+            </div>
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: LOS DATOS -->
+        <div class="case-section">
+            <h2>// LOS DATOS</h2>
+            <p>El análisis integró 5 datasets relacionales con más de 4.5 millones de transacciones: pedidos, productos,
+                productos por pedido, pasillos y departamentos. El proceso incluyó limpieza profunda de valores
+                ausentes, detección de duplicados (1,362 productos con mismo nombre pero diferente ID), normalización de
+                tipos de datos y merge de las 5 tablas para construir una vista completa del comportamiento de compra
+                por usuario.</p>
+
+            <div class="img-placeholder">
+                // IMG_02: 5 datasets relacionados
+            </div>
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: EL ANÁLISIS -->
+        <div class="case-section">
+            <h2>// EL ANÁLISIS</h2>
+            <p>Analicé tres dimensiones clave: temporal (patrones por día y hora), de producto (popularidad y tasa de
+                reorden) y de comportamiento (tamaño de pedido, frecuencia, días entre pedidos). Para cada dimensión
+                calculé distribuciones, identifiqué outliers y construí métricas derivadas como tasa de reorden por
+                producto. El análisis reveló concentración extrema: 20 productos concentran una proporción
+                desproporcionada de todas las transacciones.</p>
+
+            <div class="img-placeholder">
+                // IMG_03: patrones día y hora
+            </div>
+
+            <div class="img-placeholder">
+                // IMG_04: productos top reorden
+            </div>
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: LOS HALLAZGOS -->
+        <div class="case-section">
+            <h2>// LOS HALLAZGOS</h2>
+            <p>El domingo es el día pico con 40% más pedidos que el día valle (jueves). El 75% de pedidos ocurre entre 8
+                AM y 6 PM con pico a las 10 AM. La tasa de reorden global es 59% — los usuarios de Instacart son
+                altamente leales a sus productos. Bananas lideran con 84.4% de reorden. La categoría Produce domina con
+                29% de ventas totales, y junto con Dairy Eggs representa el 46% del negocio.</p>
+
+            <div class="img-placeholder">
+                // IMG_05: dashboard final
+            </div>
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: RESULTADO -->
+        <div class="case-section">
+            <h2>// RESULTADO</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">59%</span>
+                    <span class="metric-label">Tasa de reorden global — Bananas lideran con 84.4%</span>
+                </div>
+                <div class="metric-card significant">
+                    <span class="metric-number">Domingo</span>
+                    <span class="metric-label">Día pico — 40% más pedidos que el jueves</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">29%</span>
+                    <span class="metric-label">De ventas pertenecen a Produce — Top 19/20 productos son frescos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="case-cta">
+            <a href="https://nbviewer.org/github/Baltazardv/analisis-instacart-pedidos/blob/main/proyecto_4_instacart_limpio.ipynb"
+                target="_blank" class="btn-primary">
+                Ver análisis completo →
+            </a>
+            <a href="https://github.com/Baltazardv/analisis-instacart-pedidos" target="_blank" class="btn-secondary">
+                Ver en GitHub →
+            </a>
+            <a href="data.html" class="btn-secondary">
+                ← Volver a proyectos
+            </a>
+        </div>
+
+    </main>
+
+    <footer
+        style="text-align: center; padding: 2rem 0; color: rgba(246, 246, 246, 0.4); font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; border-top: 1px solid rgba(255, 86, 33, 0.1); margin-top: 3rem;">
+        <p>SYS.COPYRIGHT © 2026 BALTAZAR DIMAYUGA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

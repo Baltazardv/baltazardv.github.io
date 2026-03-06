@@ -14,6 +14,11 @@ var projectsData = {
         title: "Análisis Estadístico de Tarifas — Megaline",
         github: "https://github.com/Baltazardv/analisis-megaline-tarifas",
         notebook: "https://nbviewer.org/github/Baltazardv/analisis-megaline-tarifas/blob/main/proyecto_5_megaline_limpio.ipynb"
+    },
+    instacart: {
+        title: "Instacart Order Analysis",
+        github: "https://github.com/Baltazardv/analisis-instacart-pedidos",
+        notebook: "https://nbviewer.org/github/Baltazardv/analisis-instacart-pedidos/blob/main/proyecto_4_instacart_limpio.ipynb"
     }
     // Aquí se añadirán más proyectos después
 };

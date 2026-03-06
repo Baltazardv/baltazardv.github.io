@@ -315,6 +315,43 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 4: Instacart Order Analysis -->
+                <div class="project-card" onclick="openProject('instacart')">
+                    <div class="project-img">
+                        <img src="../assets/Instacart/instacart-preview.webp" alt="Instacart Order Analysis"
+                            style="width:100%; height:100%; object-fit:cover;"
+                            onerror="this.parentElement.innerHTML='<div class=\'project-img-fallback\'>🛒 INSTACART ANALYSIS</div>'">
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Instacart Order Analysis</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">EDA</span>
+                            <span class="tag">Data Wrangling</span>
+                            <span class="tag">Análisis de Patrones</span>
+                        </div>
+                        <p class="project-problem">🔍 <strong>El reto:</strong> Instacart necesitaba entender cómo,
+                            cuándo y qué compraban sus usuarios para optimizar inventario, logística y campañas de
+                            marketing.</p>
+                        <p class="project-result">✅ <strong>Resultado:</strong> 59% tasa de reorden global (Bananas
+                            lideran con 84.4%). Domingo es el día pico (40% más pedidos que jueves). 29% de ventas son
+                            Produce.</p>
+                        <div class="project-actions">
+                            <button class="btn-primary" onclick="event.stopPropagation(); openProject('instacart')">
+                                Ver análisis completo →
+                            </button>
+                            <a href="instacart.html" class="btn-primary" onclick="event.stopPropagation()">
+                                Ver Detalles →
+                            </a>
+                            <a href="https://github.com/Baltazardv/analisis-instacart-pedidos" target="_blank"
+                                onclick="event.stopPropagation()" class="btn-secondary">
+                                GitHub →
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
