@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kings League Relojes — Baltazar DV</title>
+    <title>Telecom Operator Analysis — Baltazar DV</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <style>
         .case-study {
             max-width: 900px;
+            width: 90%;
             margin: 0 auto;
             padding: 2rem 1.5rem 4rem;
         }
@@ -32,6 +33,7 @@
             color: #FF5621;
             font-size: clamp(1.2rem, 4vw, 1.8rem);
             margin-bottom: 0.75rem;
+            text-transform: uppercase;
         }
 
         .case-header p {
@@ -59,6 +61,7 @@
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid rgba(255, 86, 33, 0.25);
+            text-transform: uppercase;
         }
 
         .case-section p {
@@ -69,33 +72,67 @@
             margin-bottom: 0.75rem;
         }
 
-        .screenshot-block {
-            margin-bottom: 2.5rem;
-        }
-
-        .screenshot-block img {
+        /* Image Placeholder Style */
+        .img-placeholder {
             width: 100%;
-            border: 1px solid rgba(255, 86, 33, 0.2);
-            margin-bottom: 0.75rem;
-            transition: border-color 0.2s;
-        }
-
-        .screenshot-block img:hover {
-            border-color: #FF5621;
-        }
-
-        .screenshot-caption {
-            color: #FF5621;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .screenshot-desc {
-            color: rgba(246, 246, 246, 0.6);
+            max-width: 800px;
+            height: 400px;
+            background-color: #050505;
+            border: 1px solid rgba(0, 255, 65, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            color: #00ff41;
             font-family: 'Share Tech Mono', monospace;
-            font-size: 0.78rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .img-placeholder:hover {
+            border-color: #00ff41;
+            box-shadow: inset 0 0 30px rgba(0, 255, 65, 0.15);
+        }
+
+        .img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px);
+        }
+
+        .project-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            min-height: 350px;
+            object-fit: cover;
+            border: 1px solid #FF5621;
+            box-shadow: 0 0 30px rgba(255, 86, 33, 0.4);
+            display: block;
+            margin: 32px auto;
+            border-radius: 4px;
+        }
+
+        .section-separator {
+            color: rgba(255, 86, 33, 0.4);
+            font-family: 'Share Tech Mono', monospace;
+            text-align: center;
+            margin: 3.5rem 0;
+            letter-spacing: 2px;
+            user-select: none;
         }
 
         .metrics-grid {
@@ -110,13 +147,28 @@
             padding: 1rem;
             text-align: center;
             background: rgba(255, 86, 33, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
+        }
+
+        .metric-card.significant {
+            border-color: rgba(0, 255, 65, 0.3);
+            background: rgba(0, 255, 65, 0.04);
+        }
+
+        .metric-card.significant .metric-number {
+            color: #00ff41;
         }
 
         .metric-number {
             font-family: 'Orbitron', sans-serif;
             color: #FF5621;
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
             display: block;
+            margin-bottom: 0.5rem;
         }
 
         .metric-label {
@@ -159,6 +211,10 @@
             font-size: 1.1rem;
             font-weight: 700;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 
@@ -173,7 +229,7 @@
         <div class="nav-content">
             <a href="../index.html" class="nav-logo" style="text-decoration:none;">
                 <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
-                    <img src="../images/logo.webp" alt="Logo" style="width: 45px; height: auto;">
+                    <img src="../images/logo.webp" alt="Logo" style="height: 45px; width: auto;">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" style="width: 140px; height: auto;">
                         <defs>
                             <!-- Naranja principal -->
@@ -275,157 +331,115 @@
 
     <main class="case-study">
 
-        <a href="web.html" class="back-link">← Volver a proyectos web</a>
-
-        <!-- HERO -->
-        <img src="../assets/KingsLeague/cap1.webp" alt="Kings League Relojes Hero" class="case-hero">
+        <a href="data.html" class="back-link">← Volver a proyectos de datos</a>
 
         <!-- HEADER -->
         <div class="case-header">
-            <h1>Kings League Relojes — E-commerce Shopify</h1>
+            <h1>TELECOM_OPERATOR_ANALYSIS</h1>
+            <p>// Identificación de operadores ineficaces en call center</p>
             <div class="case-tags">
-                <span class="tag">Shopify</span>
-                <span class="tag">Liquid</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">HTML5/CSS3</span>
-                <span class="tag">UX/UI</span>
-                <span class="tag">E-commerce</span>
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Seaborn</span>
+                <span class="tag">Mann-Whitney U</span>
+                <span class="tag">Pruebas de Hipótesis</span>
+                <span class="tag">Tableau</span>
             </div>
-            <p>Tienda oficial de smartwatches y relojes de la Kings League Americas — desarrollada en Shopify con tema
-                personalizado, carrusel de equipos, 3 series de colección y checkout optimizado para el mercado LATAM.
-            </p>
         </div>
 
-        <!-- MÉTRICAS -->
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: EL PROBLEMA -->
         <div class="case-section">
-            <h2>// IMPACTO</h2>
+            <h2>// EL PROBLEMA</h2>
+            <p>Una empresa de telecomunicaciones con un call center de cientos de operadores necesitaba responder una
+                pregunta crítica: ¿quiénes están tirando llamadas y afectando la experiencia del cliente? Sin esa
+                información, capacitar a todos era costoso e ineficiente. El reto era identificar, con evidencia
+                estadística, cuáles operadores tenían bajo rendimiento para priorizar acciones de mejora.</p>
+
+            <img src="../assets/Telecom/telecom_img_01.webp" alt="Call Center Dashboard - Contexto del problema"
+                class="project-img">
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: LOS DATOS -->
+        <div class="case-section">
+            <h2>// LOS DATOS</h2>
+            <p>El dataset contenía registros de llamadas por operador: llamadas entrantes, salientes, internas, tiempo
+                de espera, llamadas perdidas y si el operador era interno o externo. Antes de cualquier análisis,
+                realicé limpieza de datos, detección de nulos y outliers, y construí métricas derivadas como tasa de
+                llamadas perdidas por operador.</p>
+
+            <img src="../assets/Telecom/telecom_img_02.webp" alt="Dataset Structure - EDA Overview" class="project-img">
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: EL ANÁLISIS -->
+        <div class="case-section">
+            <h2>// EL ANÁLISIS</h2>
+            <p>Definí "operador ineficaz" como aquel con una tasa de llamadas perdidas estadísticamente superior al
+                promedio del grupo. Usé la prueba Mann-Whitney U (no paramétrica) porque la distribución no era normal.
+                Esto me permitió comparar grupos sin asumir distribución gaussiana y validar que las diferencias
+                observadas no eran producto del azar.</p>
+
+            <img src="../assets/Telecom/telecom_img_03.webp" alt="Distribución de llamadas perdidas por operador"
+                class="project-img">
+
+            <img src="../assets/Telecom/telecom_img_04.webp"
+                alt="Boxplot comparativo - Operadores eficaces vs ineficaces" class="project-img">
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: LOS HALLAZGOS -->
+        <div class="case-section">
+            <h2>// LOS HALLAZGOS</h2>
+            <p>De 1,000+ operadores analizados, 202 fueron clasificados como ineficaces — representando el 18.5% del
+                total. Las diferencias en tasa de llamadas perdidas entre el grupo ineficaz y el resto fueron
+                estadísticamente significativas (p &lt; 0.05). Los operadores externos mostraron mayor concentración en
+                el grupo de bajo rendimiento.</p>
+
+            <img src="../assets/Telecom/telecom_img_05.webp" alt="Dashboard final - Operadores clasificados"
+                class="project-img">
+        </div>
+
+        <div class="section-separator">// ————————————</div>
+
+        <!-- SECCIÓN: RESULTADO -->
+        <div class="case-section">
+            <h2>// RESULTADO</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <span class="metric-number">25%</span>
-                    <span class="metric-label">Mejora velocidad de carga</span>
+                    <span class="metric-number" style="font-size: 2rem;">202</span>
+                    <span class="metric-label" style="font-size: 0.85rem; margin-top: 0.5rem;">Operadores ineficaces
+                        identificados — 18.5% del total</span>
                 </div>
-                <div class="metric-card">
-                    <span class="metric-number">10</span>
-                    <span class="metric-label">Productos en catálogo</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-number">3</span>
-                    <span class="metric-label">Series de colección</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-number">12</span>
-                    <span class="metric-label">Equipos integrados</span>
+                <div class="metric-card significant">
+                    <span class="metric-number" style="font-size: 2rem;">p &lt; 0.05</span>
+                    <span class="metric-label" style="font-size: 0.85rem; margin-top: 0.5rem;">Diferencias
+                        estadísticamente significativas</span>
                 </div>
             </div>
-        </div>
-
-        <!-- SECCIÓN: RETO -->
-        <div class="case-section">
-            <h2>// EL RETO</h2>
-            <p>Kings League Americas necesitaba una tienda de e-commerce que transmitiera la identidad visual de la liga
-                — fondo negro, dorado y la corona como símbolo central. El sitio debía funcionar como canal de venta
-                directo para fans de toda LATAM, con experiencia de compra fluida, múltiples métodos de pago y confianza
-                de marca desde el primer scroll.</p>
-        </div>
-
-        <!-- SCREENSHOTS DETALLADOS -->
-        <div class="case-section">
-            <h2>// SOLUCIÓN — SECCIÓN POR SECCIÓN</h2>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap2.webp" alt="Hero principal">
-                <p class="screenshot-caption">01 — HERO PRINCIPAL</p>
-                <p class="screenshot-desc">Banner de impacto con los 5 relojes flagship en disposición central. Barra de
-                    beneficios animada (Garantía 2 Años, Envíos Rápidos, Hasta 3 MSI) con scroll infinito. Navegación
-                    limpia con logo oficial y accesos directos a Tienda, Relojes y Reseñas.</p>
-            </div>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap3.webp" alt="Carrusel de equipos y producto destacado">
-                <p class="screenshot-caption">02 — CARRUSEL DE EQUIPOS + PRODUCTO DESTACADO</p>
-                <p class="screenshot-desc">Carrusel animado con los 12 escudos oficiales de los equipos de la Kings
-                    League Americas. Debajo, la sección de producto estrella — el Kingssmart smartwatch 44mm con precio,
-                    cantidad, botón de compra y opciones de pago (PayPal, Amex, MasterCard, Visa).</p>
-            </div>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap4.webp" alt="Colecciones por serie">
-                <p class="screenshot-caption">03 — COLECCIONES POR SERIE</p>
-                <p class="screenshot-desc">Sistema de filtrado por serie: Icon Series, Performance Series y Street
-                    Series. Cada colección muestra sus relojes con precio original tachado y precio de oferta —
-                    estrategia de pricing visual para impulsar conversión.</p>
-            </div>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap5.webp" alt="Catálogo completo de productos">
-                <p class="screenshot-caption">04 — CATÁLOGO COMPLETO</p>
-                <p class="screenshot-desc">Grid de productos con fotografías de alta calidad sobre fondo blanco para
-                    destacar el diseño de cada reloj. Badges de oferta, precios claros y botones de "Agregar al carrito"
-                    en cada tarjeta para reducir fricción en el proceso de compra.</p>
-            </div>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap6.webp" alt="Sección de reseñas verificadas">
-                <p class="screenshot-caption">05 — PRUEBA SOCIAL — RESEÑAS VERIFICADAS</p>
-                <p class="screenshot-desc">Sección "Lo que dicen nuestros clientes" con reseñas reales verificadas,
-                    fotos del producto en uso y calificación de 5 estrellas. La prueba social con imágenes reales genera
-                    confianza y reduce la tasa de abandono en checkout.</p>
-            </div>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap7.webp" alt="Propuesta de valor y footer">
-                <p class="screenshot-caption">06 — PROPUESTA DE VALOR + FOOTER</p>
-                <p class="screenshot-desc">Sección "Diseñados para la grandeza" con 3 pilares: Diseño Exclusivo,
-                    Garantía Oficial y Materiales de Calidad — cada uno con imagen y descripción. Footer con trust
-                    signals: Envíos Nacionales, Producto Oficial, Pago Seguro y Atención al Cliente. Newsletter para
-                    captación de leads.</p>
-            </div>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap8.webp" alt="Página de colección filtrada">
-                <p class="screenshot-caption">07 — PÁGINA DE COLECCIÓN CON FILTROS</p>
-                <p class="screenshot-desc">Vista de catálogo completo con 10 productos, sistema de filtrado por
-                    Disponibilidad y Precio, y ordenamiento alfabético. Diseño responsive con grid adaptable que
-                    mantiene la calidad visual en todos los dispositivos.</p>
-            </div>
-
-            <div class="screenshot-block">
-                <img src="../assets/KingsLeague/cap11.webp" alt="Búsqueda predictiva">
-                <p class="screenshot-caption">08 — BÚSQUEDA PREDICTIVA</p>
-                <p class="screenshot-desc">Sistema de búsqueda inteligente con resultados predictivos en tiempo real. Al
-                    escribir una letra aparecen los productos relevantes con imagen y nombre — mejora la experiencia de
-                    usuario y reduce el tiempo de búsqueda.</p>
-            </div>
-
-        </div>
-
-        <!-- STACK TÉCNICO -->
-        <div class="case-section">
-            <h2>// STACK TÉCNICO</h2>
-            <p><strong style="color:#FF5621">Shopify + Liquid:</strong> Desarrollo del tema personalizado usando el
-                lenguaje de plantillas de Shopify. Configuración de colecciones, productos, metafields y secciones
-                dinámicas editables desde el admin.</p>
-            <p><strong style="color:#FF5621">JavaScript ES6+:</strong> Lógica del carrusel de equipos con scroll
-                infinito, slider de reseñas, búsqueda predictiva y animaciones de la barra de beneficios.</p>
-            <p><strong style="color:#FF5621">HTML5/CSS3:</strong> Maquetado responsive con grid y flexbox. Paleta de
-                colores negro/dorado alineada al branding oficial de Kings League Americas. Optimización de imágenes en
-                formato WebP para mejorar tiempos de carga.</p>
         </div>
 
         <!-- CTA FINAL -->
         <div class="case-cta">
-            <a href="https://kingsleaguerelojes.com" target="_blank" class="btn-primary">
-                Ver sitio en vivo →
+            <a href="https://github.com/Baltazardv" target="_blank" class="btn-primary">
+                Ver en GitHub →
             </a>
-            <a href="https://github.com/Baltazardv/KingsLeagueShopify" target="_blank" class="btn-secondary">
-                GitHub →
-            </a>
-            <a href="web.html" class="btn-secondary">
+            <a href="data.html" class="btn-secondary">
                 ← Volver a proyectos
             </a>
         </div>
 
     </main>
+
+    <footer
+        style="text-align: center; padding: 2rem 0; color: rgba(246, 246, 246, 0.4); font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; border-top: 1px solid rgba(255, 86, 33, 0.1); margin-top: 3rem;">
+        <p>SYS.COPYRIGHT © 2026 BALTAZAR DIMAYUGA. ALL RIGHTS RESERVED.</p>
+    </footer>
 
     <script src="../script.js"></script>
 </body>
