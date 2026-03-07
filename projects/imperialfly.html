@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperial Fly — Baltazar DV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .case-study {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .case-hero {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .case-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .case-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .case-header p {
+            color: rgba(246, 246, 246, 0.6);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .case-section {
+            margin-bottom: 3rem;
+        }
+
+        .case-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 86, 33, 0.25);
+        }
+
+        .case-section p,
+        .case-section li {
+            color: rgba(246, 246, 246, 0.75);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .case-section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .screenshot-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .screenshot-block img,
+        .img-placeholder {
+            width: 100%;
+            border: 1px solid rgba(255, 86, 33, 0.2);
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s;
+        }
+
+        .img-placeholder {
+            height: 400px;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .screenshot-block img:hover,
+        .img-placeholder:hover {
+            border-color: #FF5621;
+        }
+
+        .screenshot-caption {
+            color: #FF5621;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .screenshot-desc {
+            color: rgba(246, 246, 246, 0.6);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .project-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: 1px solid #FF5621;
+            box-shadow: 0 0 30px rgba(255, 86, 33, 0.4);
+            display: block;
+            margin: 32px auto;
+            border-radius: 4px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            border: 1px solid rgba(255, 86, 33, 0.3);
+            padding: 1rem;
+            text-align: center;
+            background: rgba(255, 86, 33, 0.04);
+        }
+
+        .metric-number {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .metric-label {
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.72rem;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        .case-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 86, 33, 0.2);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(246, 246, 246, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #FF5621;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            color: #FF5621;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body style="background-color: #0a0a0a; color: #f6f6f6;">
+
+    <!-- CRT Effects -->
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="../index.html" class="nav-logo" style="text-decoration:none;">
+                <div class="logo-container" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="../images/logo.webp" alt="Logo" style="width: 45px; height: auto;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" style="width: 140px; height: auto;">
+                        <defs>
+                            <!-- Naranja principal -->
+                            <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF5621;stop-opacity:1" />
+                            </linearGradient>
+
+                            <!-- Glow naranja para el texto -->
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+
+                            <!-- Glow suave para detalles -->
+                            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+
+                            <!-- Clip para el scanner line -->
+                            <clipPath id="logoClip">
+                                <rect x="0" y="0" width="200" height="60" />
+                            </clipPath>
+                        </defs>
+
+                        <!-- Fondo negro -->
+                        <rect width="200" height="60" fill="transparent" />
+
+                        <!-- Marco exterior con esquinas cortadas — estilo cyberpunk -->
+                        <!-- Esquina superior izquierda cortada -->
+                        <polygon points="8,0 200,0 200,60 0,60 0,8" fill="none" stroke="#FF5621" stroke-width="1"
+                            opacity="0.6" />
+
+                        <!-- Detalle esquina superior izquierda -->
+                        <polyline points="0,14 0,8 8,0 18,0" fill="none" stroke="#FF5621" stroke-width="1.5"
+                            opacity="0.9" />
+                        <!-- Detalle esquina inferior derecha -->
+                        <polyline points="200,46 200,52 194,60 178,60" fill="none" stroke="#FF5621" stroke-width="1.5"
+                            opacity="0.9" />
+
+                        <!-- Línea horizontal decorativa superior -->
+                        <line x1="8" y1="4" x2="80" y2="4" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
+                        <!-- Línea horizontal decorativa inferior -->
+                        <line x1="120" y1="56" x2="192" y2="56" stroke="#FF5621" stroke-width="0.5" opacity="0.4" />
+
+                        <!-- Líneas de scan verticales muy sutiles -->
+                        <line x1="25" y1="8" x2="25" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="50" y1="8" x2="50" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="75" y1="8" x2="75" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="100" y1="8" x2="100" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="125" y1="8" x2="125" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="150" y1="8" x2="150" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+                        <line x1="175" y1="8" x2="175" y2="52" stroke="#FF5621" stroke-width="0.3" opacity="0.08" />
+
+                        <!-- Separador vertical entre BD y _ -->
+                        <line x1="130" y1="14" x2="130" y2="46" stroke="#FF5621" stroke-width="0.5" opacity="0.3" />
+
+                        <!-- TEXTO PRINCIPAL: BD_ -->
+                        <!-- Fuente monospace condensada, estilo terminal -->
+                        <text x="18" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
+                            font-weight="700" letter-spacing="-1" fill="url(#orangeGrad)" filter="url(#glow)">BD</text>
+
+                        <!-- El guión bajo parpadeante -->
+                        <text x="136" y="44" font-family="'Courier New', 'Lucida Console', monospace" font-size="38"
+                            font-weight="700" fill="#FF5621" filter="url(#glow)" opacity="1">
+                            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />_
+                        </text>
+
+                        <!-- Micro texto inferior: DATA ANALYST -->
+                        <text x="18" y="55" font-family="'Courier New', 'Lucida Console', monospace" font-size="6"
+                            letter-spacing="3.5" fill="#FF5621" opacity="0.55">DATA ANALYST</text>
+
+                        <!-- Punto decorativo superior derecha -->
+                        <circle cx="188" cy="10" r="2" fill="#FF5621" opacity="0.7" filter="url(#softGlow)" />
+                        <circle cx="188" cy="10" r="1" fill="#FF8C5A" opacity="0.9" />
+
+                        <!-- Pequeño indicador "online" -->
+                        <circle cx="176" cy="10" r="1.5" fill="#FF5621" opacity="0.5" />
+
+                        <!-- Línea decorativa después del texto -->
+                        <line x1="155" y1="44" x2="190" y2="44" stroke="#FF5621" stroke-width="0.5" opacity="0.25" />
+                        <line x1="160" y1="47" x2="190" y2="47" stroke="#FF5621" stroke-width="0.5" opacity="0.15" />
+                    </svg>
+                </div>
+            </a>
+            <div class="header-nav-btns">
+                <a href="../index.html" class="back-home-btn">← INICIO</a>
+                <a href="javascript:history.back()" class="return-btn">&lt; RETURN</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="case-study">
+
+        <a href="web.html" class="back-link">← Volver a proyectos web</a>
+
+        <!-- HERO -->
+        <img src="../assets/Imperialfly/imperialfly01.webp" alt="Imperial Fly - Hero principal" class="project-img">
+
+        <!-- HEADER -->
+        <div class="case-header">
+            <h1>IMPERIAL_FLY</h1>
+            <p>// Plataforma de reservas Business Class exclusivo</p>
+            <div class="case-tags">
+                <span class="tag">GoDaddy Airo</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">SEO</span>
+                <span class="tag">UX/UI</span>
+                <span class="tag">Landing Page</span>
+            </div>
+        </div>
+
+        <div class="case-cta" style="margin-top: 1rem; margin-bottom: 2rem; border-top: none; padding-top: 0;">
+            <a href="https://imperialfly.com" target="_blank" class="btn-primary">
+                Sitio en vivo →
+            </a>
+            <a href="https://imperialfly.com/acceso-v-i-p" target="_blank" class="btn-secondary">
+                Acceso VIP →
+            </a>
+        </div>
+
+        <!-- MÉTRICAS -->
+        <div class="case-section">
+            <h2>// IMPACTO</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">108</span>
+                    <span class="metric-label">Visitantes últimos 30 días</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">113</span>
+                    <span class="metric-label">Alcance en redes sociales</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">5</span>
+                    <span class="metric-label">Secciones desarrolladas</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">2</span>
+                    <span class="metric-label">Sitios web (imperialfly.com + imperialflyvip.online)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: RETO -->
+        <div class="case-section">
+            <h2>// EL RETO</h2>
+            <p>Cliente del sector aeronáutico necesitaba una presencia digital premium para vender boletos Business
+                Class a precios accesibles. El reto era transmitir lujo y exclusividad sin perder conversión, integrando
+                una sección VIP con ofertas dinámicas por tiempo limitado y una landing page externa para captar leads
+                desde Facebook Ads.</p>
+            <img src="../assets/Imperialfly/imperialfly01.webp" alt="Imperial Fly - Hero principal" class="project-img">
+            <img src="../assets/Imperialfly/imperialfly02.webp" alt="Imperial Fly - Aerolíneas asociadas"
+                class="project-img">
+        </div>
+
+        <!-- SECCIÓN: SOLUCIÓN -->
+        <div class="case-section">
+            <h2>// LA SOLUCIÓN</h2>
+            <p>Desarrollo de sitio web completo con identidad visual oscura y dorada que comunica exclusividad. Se
+                implementó una página de Acceso VIP con countdown dinámico en tiempo real que cambia ofertas cada 24
+                horas — similar al modelo de la tienda de Fortnite. Complementado con una landing page externa
+                (imperialflyvip.online) con formulario de captación de leads optimizado para campañas de pauta en
+                Facebook.</p>
+
+            <img src="../assets/Imperialfly/imperialfly03.webp" alt="Imperial Fly - Proceso 3 pasos"
+                class="project-img">
+
+            <img src="../assets/Imperialfly/imperialfly04.webp" alt="Imperial Fly - Por qué elegir Imperial Fly"
+                class="project-img">
+
+            <img src="../assets/Imperialfly/imperialfly05.webp" alt="Imperial Fly - Destinos Europa"
+                class="project-img">
+
+            <img src="../assets/Imperialfly/imperialfly06.webp" alt="Imperial Fly - Beneficios con iconos"
+                class="project-img">
+
+            <img src="../assets/Imperialfly/imperialfly07.webp" alt="Imperial Fly - Testimonios de clientes carousel"
+                class="project-img">
+
+            <img src="../assets/Imperialfly/imperialfly08.webp" alt="Imperial Fly - Política de precios y contacto"
+                class="project-img">
+        </div>
+
+        <!-- SECCIÓN: ACCESO VIP -->
+        <div class="case-section">
+            <h2>// ACCESO_VIP</h2>
+            <p>
+                Se desarrolló la subpágina imperialfly.com/acceso-v-i-p
+                con sistema de ofertas dinámicas inspirado en el modelo
+                de rotación de la tienda de Fortnite. Cada 24 horas las
+                ofertas cambian automáticamente via countdown JavaScript.
+                Acceso VIP con hasta 70% descuento en aerolíneas como
+                Iberia, Air France, Etihad y Singapore Airlines.
+            </p>
+            <img src="../assets/Imperialfly/imperialflyVIP01.webp" alt="Imperial Fly VIP - Venta Flash con countdown"
+                class="project-img">
+            <img src="../assets/Imperialfly/imperialflyVIP02.webp" alt="Imperial Fly VIP - Ofertas exclusivas"
+                class="project-img">
+            <img src="../assets/Imperialfly/imperialflyVIP03.webp" alt="Imperial Fly VIP - Landing page hero"
+                class="project-img">
+            <img src="../assets/Imperialfly/imperialflyVIP04.webp" alt="Imperial Fly VIP - Formulario de reserva"
+                class="project-img">
+            <img src="../assets/Imperialfly/imperialflyVIP05.webp" alt="Imperial Fly VIP - La Experiencia con iconos"
+                class="project-img">
+        </div>
+
+        <!-- SECCIÓN: LANDING PAGE EXTERNA -->
+        <div class="case-section">
+            <h2>// LANDING_PAGE_EXTERNA</h2>
+            <p>
+                Landing page externa independiente optimizada para
+                campañas de Facebook Ads. Formulario multi-step de
+                4 pasos para captación de leads: nombre, WhatsApp,
+                correo, origen, destino, fechas, pasajeros, clase
+                y presupuesto. El asesor contacta al cliente por
+                WhatsApp al completar el formulario.
+            </p>
+            <img src="../assets/Imperialfly/imperialflyONLINE01.webp" alt="Imperial Fly VIP Online - Hero landing page"
+                class="project-img">
+            <img src="../assets/Imperialfly/imperialflyONLINE02.webp" alt="Imperial Fly VIP Online - Formulario paso 1"
+                class="project-img">
+        </div>
+
+        <!-- STACK TÉCNICO -->
+        <div class="case-section">
+            <h2>// STACK & HERRAMIENTAS</h2>
+            <div class="case-tags">
+                <span class="tag">GoDaddy Airo</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">SEO On-Page</span>
+                <span class="tag">UX/UI Design</span>
+                <span class="tag">Facebook Ads Integration</span>
+                <span class="tag">Lead Generation Forms</span>
+            </div>
+        </div>
+
+        <!-- SITIOS -->
+        <div class="case-section">
+            <h2>// SITIOS</h2>
+            <div class="case-cta" style="margin-top: 1.5rem; border-top: none; padding-top: 0;">
+                <a href="https://imperialfly.com" target="_blank" class="btn-primary"
+                    style="font-size: 1.1rem; padding: 0.8rem 1.5rem;">
+                    imperialfly.com →
+                </a>
+                <a href="https://imperialflyvip.online" target="_blank" class="btn-secondary"
+                    style="font-size: 1.1rem; padding: 0.8rem 1.5rem;">
+                    imperialflyvip.online →
+                </a>
+            </div>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="case-cta">
+            <a href="web.html" class="btn-secondary">
+                ← Volver a proyectos
+            </a>
+        </div>
+
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
