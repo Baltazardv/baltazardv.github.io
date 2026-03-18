@@ -502,7 +502,7 @@ h1.glitch {
     padding-bottom: 1rem;
 }
 
-/* TABS — reemplazar todo lo anterior */
+/* TABS  reemplazar todo lo anterior */
 .tab-content {
     display: none;
 }
@@ -1361,7 +1361,7 @@ footer {
         height: 175px;
     }
 
-    /* Hero: nombre — evitar desbordamiento */
+    /* Hero: nombre  evitar desbordamiento */
     .hero {
         overflow-x: hidden;
     }
@@ -1391,7 +1391,7 @@ footer {
         padding: 0 0.5rem;
     }
 
-    /* Pestañas: 2x2 grid en lugar de scroll horizontal */
+    /* Pestaas: 2x2 grid en lugar de scroll horizontal */
     .tabs-container {
         display: flex;
         flex-wrap: wrap;
@@ -1410,7 +1410,7 @@ footer {
         text-overflow: ellipsis;
     }
 
-    /* Gráficas impact: una por columna */
+    /* Grficas impact: una por columna */
     .charts-grid {
         grid-template-columns: 1fr;
     }
@@ -1487,7 +1487,7 @@ footer {
     }
 }
 
-/* ── IMPACT SECTION CONTEXT IMPROVEMENTS ─────────────────── */
+/*  IMPACT SECTION CONTEXT IMPROVEMENTS  */
 .chart-subtitle {
     display: block;
     color: rgba(255, 86, 33, 0.7);
@@ -1565,7 +1565,7 @@ footer {
     line-height: 1.3;
 }
 
-/* ── EXPERIENCE SECTION EXPAND/COLLAPSE ──────────────────── */
+/*  EXPERIENCE SECTION EXPAND/COLLAPSE  */
 .log-summary {
     cursor: pointer;
     user-select: none;
@@ -1628,7 +1628,7 @@ footer {
 }
 
 .exp-bullets li::before {
-    content: '•';
+    content: '';
     color: #FF5621;
     position: absolute;
     left: 0;
@@ -1671,9 +1671,9 @@ footer {
     }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   FIX 1 — Hero scroll trap (mobile)
-   ═══════════════════════════════════════════════════════════ */
+/* 
+   FIX 1  Hero scroll trap (mobile)
+    */
 html,
 body {
     overflow-x: hidden;
@@ -1695,7 +1695,7 @@ body {
         overflow: hidden;
     }
 
-    /* ── FIX 2 — Nombre cortado en Hero ── */
+    /*  FIX 2  Nombre cortado en Hero  */
     h1.glitch {
         font-size: clamp(1.3rem, 7vw, 2.2rem);
         white-space: nowrap;
@@ -1711,9 +1711,9 @@ body {
     }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   FIX 4 — Skills accordion (mobile only)
-   ═══════════════════════════════════════════════════════════ */
+/* 
+   FIX 4  Skills accordion (mobile only)
+    */
 @media (max-width: 768px) {
     .tabs-container {
         flex-direction: column;
@@ -1731,19 +1731,19 @@ body {
     }
 
     .tab-btn::after {
-        content: ' ▼';
+        content: ' ';
         font-size: 0.7em;
         opacity: 0.6;
     }
 
     .tab-btn.active::after {
-        content: ' ▲';
+        content: ' ';
     }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   FIX 5 — Back home button & Navigation (all project pages)
-   ═══════════════════════════════════════════════════════════ */
+/* 
+   FIX 5  Back home button & Navigation (all project pages)
+    */
 .header-nav-btns {
     display: flex;
     gap: 0.5rem;
@@ -1798,9 +1798,9 @@ body {
     color: #FF5621;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   FIX 6 — Notebook loading spinner
-   ═══════════════════════════════════════════════════════════ */
+/* 
+   FIX 6  Notebook loading spinner
+    */
 .notebook-loader {
     position: fixed;
     inset: 0;
@@ -1873,7 +1873,7 @@ body {
     }
 
     .hero-subtitle-secondary::before {
-        content: '─────────────';
+        content: '';
         display: block;
         color: #333;
         font-size: 0.6rem;
@@ -1886,4 +1886,32 @@ body {
     .subtitle {
         font-size: clamp(0.75rem, 3.5vw, 0.95rem);
     }
+}
+
+/* ─── ELEVATOR PITCH — Width Fix ────────────────────────── */
+.pitch-outer-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  background: rgba(255, 86, 33, 0.03);
+  border: 1px solid rgba(255, 86, 33, 0.15);
+  border-radius: 8px;
+}
+
+.pitch-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border: 1px solid #FF5621;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(255, 86, 33, 0.25), 0 0 2px rgba(255, 86, 33, 0.4);
+  overflow: hidden;
+}
+
+.pitch-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

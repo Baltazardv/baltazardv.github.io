@@ -594,3 +594,41 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('resize', () => {
     initMobileSkillsAccordion();
 });
+
+// ─── ELEVATOR PITCH — Mute/Unmute toggle + Volume slider ─────────────────────
+function togglePitchMute() {
+    const video = document.getElementById('pitch-video');
+    if (!video) return;
+    const isMuted = video.muted;
+    video.muted = !isMuted;
+
+    // Swap icons
+    document.getElementById('pitch-icon-muted').style.display = isMuted ? 'none' : 'inline';
+    document.getElementById('pitch-icon-unmuted').style.display = isMuted ? 'inline' : 'none';
+
+    // Sync volume with slider when unmuting
+    if (isMuted) {
+        const slider = document.getElementById('pitch-volume');
+        video.volume = slider ? parseFloat(slider.value) : 0.8;
+    }
+}
+
+// Wire up volume slider once DOM is ready (safe guard for deferred script)
+(function initPitchVolume() {
+    const slider = document.getElementById('pitch-volume');
+    const video = document.getElementById('pitch-video');
+    if (!slider || !video) return;
+
+    // Set initial volume level (video starts muted, but volume ready for when unmuted)
+    video.volume = parseFloat(slider.value);
+
+    slider.addEventListener('input', function () {
+        video.volume = parseFloat(this.value);
+        // If user changes volume and video is muted, unmute it automatically
+        if (video.muted && parseFloat(this.value) > 0) {
+            video.muted = false;
+            document.getElementById('pitch-icon-muted').style.display = 'none';
+            document.getElementById('pitch-icon-unmuted').style.display = 'inline';
+        }
+    });
+})();
